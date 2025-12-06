@@ -1,0 +1,1089 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Collections | Aurelia Jewelry</title>
+
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@300;400;500&display=swap"
+    rel="stylesheet" />
+
+  <style>
+    :root {
+      --color-primary: #d4af37;
+      --color-primary-light: #e8d9a7;
+      --color-secondary: #a89f91;
+      --color-dark: #1a1a1a;
+      --color-light: #f8f7f4;
+      --color-white: #ffffff;
+      --font-heading: "Cormorant Garamond", serif;
+      --font-body: "Inter", sans-serif;
+      --shadow-light: 0 4px 20px rgba(0, 0, 0, 0.05);
+      --shadow-medium: 0 8px 30px rgba(0, 0, 0, 0.12);
+      --border-radius: 12px;
+      --transition: all 0.3s ease;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: var(--font-body);
+      color: var(--color-dark);
+      background-color: var(--color-white);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+      font-family: var(--font-heading);
+      font-weight: 600;
+      line-height: 1.2;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    .section {
+      padding: 90px 0;
+    }
+
+    .section-header {
+      text-align: center;
+      margin-bottom: 50px;
+    }
+
+    .section-header h2 {
+      font-size: 36px;
+      margin-bottom: 10px;
+    }
+
+    .section-header p {
+      max-width: 580px;
+      margin: 0 auto;
+      color: var(--color-secondary);
+    }
+
+    /* HEADER */
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background-color: var(--color-white);
+      box-shadow: var(--shadow-light);
+      z-index: 1000;
+      padding: 14px 0;
+    }
+
+    .header-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-family: var(--font-heading);
+      font-size: 28px;
+      font-weight: 700;
+      color: var(--color-dark);
+      text-decoration: none;
+      letter-spacing: 1px;
+    }
+
+    .logo span {
+      color: var(--color-primary);
+    }
+
+    .nav-menu {
+      display: flex;
+      gap: 32px;
+      align-items: center;
+    }
+
+    .nav-link {
+      position: relative;
+      font-size: 15px;
+      text-decoration: none;
+      color: var(--color-dark);
+      font-weight: 500;
+      transition: var(--transition);
+    }
+
+    .nav-link::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -4px;
+      width: 0;
+      height: 1px;
+      background-color: var(--color-primary);
+      transition: var(--transition);
+    }
+
+    .nav-link:hover {
+      color: var(--color-primary);
+    }
+
+    .nav-link:hover::after,
+    .nav-link.active::after {
+      width: 100%;
+    }
+
+    .nav-link.active {
+      color: var(--color-primary);
+    }
+
+    .nav-icons {
+      display: flex;
+      gap: 16px;
+      align-items: center;
+    }
+
+    .nav-icon {
+      color: var(--color-dark);
+      font-size: 17px;
+      transition: var(--transition);
+    }
+
+    .nav-icon:hover {
+      color: var(--color-primary);
+      transform: translateY(-1px);
+    }
+
+    .hamburger {
+      display: none;
+      cursor: pointer;
+      font-size: 22px;
+    }
+
+    /* PAGE HERO (Collections.Hero) */
+    .page-hero {
+      padding: 160px 0 110px;
+      background:
+        linear-gradient(135deg,
+          rgba(248, 247, 244, 0.95) 0%,
+          rgba(248, 247, 244, 0.88) 40%,
+          rgba(255, 255, 255, 0.9) 100%),
+        url("https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?auto=format&fit=crop&w=1600&q=80")
+        center/cover no-repeat;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .page-hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at top left,
+          rgba(212, 175, 55, 0.2),
+          transparent 60%);
+      pointer-events: none;
+    }
+
+    .page-hero .container {
+      position: relative;
+      z-index: 1;
+      animation: fade-down 0.8s ease-out both;
+    }
+
+    .page-hero h1 {
+      font-size: 52px;
+      margin-bottom: 16px;
+      color: var(--color-dark);
+      letter-spacing: 0.04em;
+    }
+
+    .page-hero p {
+      font-size: 18px;
+      color: var(--color-secondary);
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    /* Collections.ImageStrip */
+    .image-strip-section {
+      background-color: var(--color-light);
+      padding: 70px 0;
+    }
+
+    .image-strip {
+      display: grid;
+      grid-template-columns: 2fr 1.5fr 1.5fr;
+      gap: 14px;
+    }
+
+    .image-strip-left {
+      display: grid;
+      grid-template-rows: 1.3fr 1fr;
+      gap: 14px;
+    }
+
+    .image-strip-right {
+      display: grid;
+      grid-template-rows: repeat(3, 1fr);
+      gap: 14px;
+    }
+
+    .strip-img {
+      border-radius: 18px;
+      overflow: hidden;
+      box-shadow: var(--shadow-light);
+      position: relative;
+    }
+
+    .strip-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.6s ease;
+    }
+
+    .strip-img:hover img {
+      transform: scale(1.05);
+    }
+
+    .strip-label {
+      position: absolute;
+      left: 16px;
+      bottom: 16px;
+      padding: 6px 14px;
+      border-radius: 999px;
+      background-color: rgba(0, 0, 0, 0.6);
+      color: #fff;
+      font-size: 12px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      font-family: var(--font-body);
+    }
+
+    /* Collections.FilterTabs */
+    .collections-section {
+      padding: 90px 0 70px;
+    }
+
+    .collections-header-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 32px;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .collections-header-row h2 {
+      font-size: 30px;
+    }
+
+    .collections-tabs {
+      display: inline-flex;
+      gap: 10px;
+      padding: 4px;
+      border-radius: 999px;
+      background-color: var(--color-light);
+    }
+
+    .collections-tab {
+      border: none;
+      background-color: transparent;
+      padding: 8px 18px;
+      border-radius: 999px;
+      font-size: 13px;
+      font-family: var(--font-body);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      cursor: pointer;
+      color: var(--color-secondary);
+      transition: var(--transition);
+    }
+
+    .collections-tab.active {
+      background-color: var(--color-primary);
+      color: #fff;
+      box-shadow: var(--shadow-light);
+    }
+
+    .collections-tab:hover:not(.active) {
+      color: var(--color-dark);
+    }
+
+    /* Collections.ProductGrid (small cards) */
+    .collections-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 26px;
+    }
+
+    .collection-card {
+      background-color: var(--color-white);
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: var(--shadow-light);
+      transition: var(--transition);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .collection-card:hover {
+      transform: translateY(-8px);
+      box-shadow: var(--shadow-medium);
+    }
+
+    .collection-card-image {
+      height: 190px;
+      overflow: hidden;
+    }
+
+    .collection-card-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+
+    .collection-card:hover .collection-card-image img {
+      transform: scale(1.06);
+    }
+
+    .collection-card-content {
+      padding: 16px 18px 18px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .collection-card-collection {
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--color-primary);
+      font-weight: 500;
+    }
+
+    .collection-card-title {
+      font-size: 18px;
+    }
+
+    .collection-card-price {
+      font-size: 15px;
+      color: var(--color-secondary);
+    }
+
+    /* Shared.TestimonialSection */
+    .testimonials-section {
+      padding: 90px 0;
+      background-color: var(--color-light);
+    }
+
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 30px;
+    }
+
+    .testimonial-card {
+      padding: 32px 26px;
+      background-color: var(--color-white);
+      border-radius: var(--border-radius);
+      box-shadow: var(--shadow-light);
+      transition: var(--transition);
+    }
+
+    .testimonial-card:hover {
+      transform: translateY(-6px);
+      box-shadow: var(--shadow-medium);
+    }
+
+    .testimonial-text {
+      font-style: italic;
+      margin-bottom: 22px;
+      color: var(--color-secondary);
+      font-size: 15px;
+    }
+
+    .testimonial-author {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .author-avatar {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background-color: var(--color-primary-light);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 600;
+      color: var(--color-dark);
+    }
+
+    .author-info h4 {
+      font-size: 16px;
+      margin-bottom: 2px;
+    }
+
+    .author-info p {
+      color: var(--color-secondary);
+      font-size: 13px;
+    }
+
+    /* PAGINATION (Optional – for future if you expand collections) */
+    .pagination {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 8px;
+      margin-top: 40px;
+    }
+
+    .page-link {
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      color: var(--color-dark);
+      font-size: 14px;
+      border: 1px solid transparent;
+      transition: var(--transition);
+    }
+
+    .page-link:hover {
+      border-color: var(--color-primary);
+      color: var(--color-primary);
+      transform: translateY(-1px);
+    }
+
+    .page-link.active {
+      background-color: var(--color-primary);
+      color: var(--color-white);
+      border-color: var(--color-primary);
+      box-shadow: var(--shadow-light);
+    }
+
+    /* FOOTER */
+    footer {
+      background-color: var(--color-dark);
+      color: var(--color-white);
+      padding: 70px 0 40px;
+      margin-top: 20px;
+    }
+
+    .footer-container {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 40px;
+      margin-bottom: 40px;
+    }
+
+    .footer-logo {
+      font-family: var(--font-heading);
+      font-size: 26px;
+      font-weight: 700;
+      margin-bottom: 16px;
+    }
+
+    .footer-logo span {
+      color: var(--color-primary);
+    }
+
+    .footer-about p {
+      color: #b5b5b5;
+      font-size: 14px;
+      margin-bottom: 18px;
+    }
+
+    .social-icons {
+      display: flex;
+      gap: 14px;
+    }
+
+    .social-icon {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      color: var(--color-white);
+      background-color: rgba(255, 255, 255, 0.06);
+      transition: var(--transition);
+      font-size: 14px;
+    }
+
+    .social-icon:hover {
+      background-color: var(--color-primary);
+      transform: translateY(-2px);
+    }
+
+    .footer-heading {
+      font-size: 18px;
+      margin-bottom: 18px;
+    }
+
+    .footer-links {
+      list-style: none;
+      font-size: 14px;
+    }
+
+    .footer-links li {
+      margin-bottom: 10px;
+      color: #b5b5b5;
+    }
+
+    .footer-links a {
+      color: #b5b5b5;
+      text-decoration: none;
+      transition: var(--transition);
+    }
+
+    .footer-links a:hover {
+      color: var(--color-primary);
+    }
+
+    .footer-links i {
+      margin-right: 6px;
+    }
+
+    .footer-bottom {
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      padding-top: 18px;
+      text-align: center;
+      font-size: 13px;
+      color: #a8a8a8;
+    }
+
+    /* ANIMATIONS */
+    .animate-on-scroll {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+
+    .animate-on-scroll.in-view {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @keyframes fade-down {
+      from {
+        opacity: 0;
+        transform: translateY(-18px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 1024px) {
+      .image-strip {
+        grid-template-columns: 1.7fr 1.3fr;
+      }
+
+      .image-strip-right {
+        grid-template-rows: repeat(3, 1fr);
+      }
+
+      .collections-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+
+      .testimonials-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .footer-container {
+        grid-template-columns: 1.6fr 1fr 1fr;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .hamburger {
+        display: block;
+      }
+
+      .nav-menu {
+        position: fixed;
+        top: 70px;
+        left: -100%;
+        width: 100%;
+        height: calc(100vh - 70px);
+        background-color: var(--color-white);
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+        padding-top: 30px;
+        gap: 24px;
+        transition: var(--transition);
+      }
+
+      .nav-menu.active {
+        left: 0;
+      }
+
+      .page-hero {
+        padding: 135px 0 80px;
+      }
+
+      .page-hero h1 {
+        font-size: 40px;
+      }
+
+      .image-strip {
+        grid-template-columns: 1fr;
+      }
+
+      .image-strip-left {
+        grid-template-rows: 1fr;
+      }
+
+      .collections-header-row {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .collections-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .testimonials-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .footer-container {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .page-hero h1 {
+        font-size: 34px;
+      }
+
+      .page-hero p {
+        font-size: 16px;
+      }
+
+      .section {
+        padding: 70px 0;
+      }
+
+      .collections-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .testimonials-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .footer-container {
+        grid-template-columns: 1fr;
+        gap: 28px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Header -->
+  <header>
+    <div class="container header-container">
+      <a href="index.html" class="logo">Aurelia<span>.</span></a>
+
+      <div class="hamburger">
+        <i class="fas fa-bars"></i>
+      </div>
+
+      <nav class="nav-menu">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="shop.html" class="nav-link">Shop</a>
+        <a href="collections.html" class="nav-link active">Collections</a>
+        <a href="about.html" class="nav-link">About</a>
+        <a href="blog.html" class="nav-link">Blog</a>
+        <a href="contact.html" class="nav-link">Contact</a>
+      </nav>
+
+      <div class="nav-icons">
+        <a href="#" class="nav-icon"><i class="fas fa-search"></i></a>
+        <a href="#" class="nav-icon"><i class="fas fa-user"></i></a>
+        <a href="#" class="nav-icon"><i class="fas fa-shopping-bag"></i></a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Collections.Hero -->
+  <section class="page-hero">
+    <div class="container">
+      <h1>Collections</h1>
+      <p>Explore our curated collections of rings, necklaces, earrings, and more—each crafted to capture timeless
+        elegance.</p>
+    </div>
+  </section>
+
+  <!-- Collections.ImageStrip -->
+  <section class="image-strip-section">
+    <div class="container animate-on-scroll">
+      <div class="image-strip">
+        <div class="image-strip-left">
+          <div class="strip-img">
+            <img
+              src="https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?auto=format&fit=crop&w=900&q=80"
+              alt="Signature Necklace Collection" />
+            <span class="strip-label">Signature Necklaces</span>
+          </div>
+          <div class="strip-img">
+            <img
+              src="images/hero-aurelia.jpg"
+              alt="Modern Ring Stack" />
+            <span class="strip-label">Modern Ring Stack</span>
+          </div>
+        </div>
+        <div class="image-strip-right">
+          <div class="strip-img">
+            <img
+              src="https://images.unsplash.com/photo-1605100804763-247f67b3557e?auto=format&fit=crop&w=900&q=80"
+              alt="Minimalist Silver Pieces" />
+            <span class="strip-label">Minimalist Silver</span>
+          </div>
+          <div class="strip-img">
+            <img
+              src="images/18K Gold Bracelet.webp"
+              alt="Bridal Jewelry Set" />
+            <span class="strip-label">Bridal Edit</span>
+          </div>
+          <div class="strip-img">
+            <img
+              src="https://images.unsplash.com/photo-1543294001-f7cd5d7fb516?auto=format&fit=crop&w=900&q=80"
+              alt="Emerald and Gemstone Pieces" />
+            <span class="strip-label">Gemstone Highlights</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Collections.FilterTabs + Collections.ProductGrid -->
+  <section class="collections-section">
+    <div class="container animate-on-scroll">
+      <div class="collections-header-row">
+        <h2>Curated Pieces by Collection</h2>
+        <div class="collections-tabs">
+          <button class="collections-tab active" data-filter="all">All</button>
+          <button class="collections-tab" data-filter="ring">Ring</button>
+          <button class="collections-tab" data-filter="necklace">Necklace</button>
+          <button class="collections-tab" data-filter="earring">Earring</button>
+        </div>
+      </div>
+
+      <div class="collections-grid" id="collectionsGrid">
+        <!-- Ring -->
+        <article class="collection-card animate-on-scroll" data-collection="ring">
+          <div class="collection-card-image">
+            <img
+              src="images/Ring1.jpg"
+              alt="Solitaire Diamond Ring" />
+          </div>
+          <div class="collection-card-content">
+            <span class="collection-card-collection">Ring Collection</span>
+            <h3 class="collection-card-title">Solitaire Diamond Ring</h3>
+            <p class="collection-card-price">From $1,850</p>
+          </div>
+        </article>
+
+        <article class="collection-card animate-on-scroll" data-collection="ring">
+          <div class="collection-card-image">
+            <img
+              src="images/Ring2.jpg"
+              alt="Sapphire & Diamond Ring" />
+          </div>
+          <div class="collection-card-content">
+            <span class="collection-card-collection">Ring Collection</span>
+            <h3 class="collection-card-title">Sapphire &amp; Diamond Ring</h3>
+            <p class="collection-card-price">From $2,200</p>
+          </div>
+        </article>
+
+        <!-- Necklace -->
+        <article class="collection-card animate-on-scroll" data-collection="necklace">
+          <div class="collection-card-image">
+            <img
+              src="images/Pear1.webp"
+              alt="Pearl & Diamond Necklace" />
+          </div>
+          <div class="collection-card-content">
+            <span class="collection-card-collection">Necklace Collection</span>
+            <h3 class="collection-card-title">Pearl &amp; Diamond Necklace</h3>
+            <p class="collection-card-price">From $2,450</p>
+          </div>
+        </article>
+
+        <article class="collection-card animate-on-scroll" data-collection="necklace">
+          <div class="collection-card-image">
+            <img
+              src="images/Pear2.jpeg"
+              alt="Minimalist Silver Necklace" />
+          </div>
+          <div class="collection-card-content">
+            <span class="collection-card-collection">Necklace Collection</span>
+            <h3 class="collection-card-title">Minimalist Silver Necklace</h3>
+            <p class="collection-card-price">From $850</p>
+          </div>
+        </article>
+
+        <!-- Earring -->
+        <article class="collection-card animate-on-scroll" data-collection="earring">
+          <div class="collection-card-image">
+            <img
+              src="images/ERing1.webp"
+              alt="Diamond Stud Earrings" />
+          </div>
+          <div class="collection-card-content">
+            <span class="collection-card-collection">Earring Collection</span>
+            <h3 class="collection-card-title">Diamond Stud Earrings</h3>
+            <p class="collection-card-price">From $1,950</p>
+          </div>
+        </article>
+
+        <article class="collection-card animate-on-scroll" data-collection="earring">
+          <div class="collection-card-image">
+            <img
+              src="images/ERing2.webp"
+              alt="Gold Hoop Earrings" />
+          </div>
+          <div class="collection-card-content">
+            <span class="collection-card-collection">Earring Collection</span>
+            <h3 class="collection-card-title">Classic Gold Hoops</h3>
+            <p class="collection-card-price">From $620</p>
+          </div>
+        </article>
+
+        <!-- Mixed (will show under All only) -->
+        <article class="collection-card animate-on-scroll" data-collection="ring">
+          <div class="collection-card-image">
+            <img
+              src="images/Ring3.jpg"
+              alt="Emerald Halo Ring" />
+          </div>
+          <div class="collection-card-content">
+            <span class="collection-card-collection">Ring Collection</span>
+            <h3 class="collection-card-title">Emerald Halo Ring</h3>
+            <p class="collection-card-price">From $3,050</p>
+          </div>
+        </article>
+
+        <article class="collection-card animate-on-scroll" data-collection="necklace">
+          <div class="collection-card-image">
+            <img
+              src="images/Neckless.jpeg"
+              alt="Layered Gold Necklace Set" />
+          </div>
+          <div class="collection-card-content">
+            <span class="collection-card-collection">Necklace Collection</span>
+            <h3 class="collection-card-title">Layered Gold Necklace Set</h3>
+            <p class="collection-card-price">From $1,320</p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Shared.TestimonialSection -->
+  <section class="testimonials-section">
+    <div class="container animate-on-scroll">
+      <div class="section-header">
+        <h2>All The Happy Reviews</h2>
+        <p>Discover what our clients have to say about their Aurelia experience.</p>
+      </div>
+      <div class="testimonials-grid">
+        <div class="testimonial-card">
+          <p class="testimonial-text">
+            "The attention to detail is exceptional. My engagement ring receives compliments daily. The entire experience
+            from purchase to delivery was flawless."
+          </p>
+          <div class="testimonial-author">
+            <div class="author-avatar">SJ</div>
+            <div class="author-info">
+              <h4>Sarah Johnson</h4>
+              <p>Los Angeles, CA</p>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial-card">
+          <p class="testimonial-text">
+            "I purchased a necklace for my wife's birthday. The quality is outstanding and the packaging made it feel
+            like a truly special gift. Highly recommend!"
+          </p>
+          <div class="testimonial-author">
+            <div class="author-avatar">MR</div>
+            <div class="author-info">
+              <h4>Michael Roberts</h4>
+              <p>New York, NY</p>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial-card">
+          <p class="testimonial-text">
+            "As a jewelry collector, I'm particular about craftsmanship. Aurelia exceeds expectations with every piece.
+            Their customer service is also exceptional."
+          </p>
+          <div class="testimonial-author">
+            <div class="author-avatar">ED</div>
+            <div class="author-info">
+              <h4>Emily Davis</h4>
+              <p>Chicago, IL</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="footer-container">
+        <div class="footer-about">
+          <div class="footer-logo">Aurelia<span>.</span></div>
+          <p>
+            Luxury minimalist jewelry crafted with precision and passion. Each piece
+            tells a story of elegance and timeless beauty.
+          </p>
+          <div class="social-icons">
+            <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+            <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" class="social-icon"><i class="fab fa-pinterest"></i></a>
+            <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+          </div>
+        </div>
+        <div>
+          <h3 class="footer-heading">Quick Links</h3>
+          <ul class="footer-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="shop.html">Shop</a></li>
+            <li><a href="collections.html">Collections</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="blog.html">Blog</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="footer-heading">Help</h3>
+          <ul class="footer-links">
+            <li><a href="faq.html">FAQ</a></li>
+            <li><a href="#">Shipping &amp; Returns</a></li>
+            <li><a href="#">Size Guide</a></li>
+            <li><a href="#">Privacy Policy</a></li>
+            <li><a href="#">Terms of Service</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="footer-heading">Store Info</h3>
+          <ul class="footer-links">
+            <li><i class="fas fa-map-marker-alt"></i> 123 Luxury Avenue, New York, NY</li>
+            <li><i class="fas fa-phone"></i> +1 (555) 123-4567</li>
+            <li><i class="fas fa-envelope"></i> info@aurelia.com</li>
+            <li><i class="fas fa-clock"></i> Mon-Fri: 10am-7pm</li>
+            <li><i class="fas fa-clock"></i> Sat-Sun: 11am-5pm</li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2023 Aurelia Jewelry. All rights reserved. | Luxury Jewelry Boutique</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Mobile Navigation Toggle
+    const hamburger = document.querySelector(".hamburger");
+    const navMenu = document.querySelector(".nav-menu");
+
+    hamburger.addEventListener("click", () => {
+      navMenu.classList.toggle("active");
+      hamburger.querySelector("i").classList.toggle("fa-bars");
+      hamburger.querySelector("i").classList.toggle("fa-times");
+    });
+
+    // Close mobile menu when clicking on a link
+    document.querySelectorAll(".nav-link").forEach((link) => {
+      link.addEventListener("click", () => {
+        navMenu.classList.remove("active");
+        hamburger.querySelector("i").classList.add("fa-bars");
+        hamburger.querySelector("i").classList.remove("fa-times");
+      });
+    });
+
+    // Collections.FilterTabs logic
+    const tabs = document.querySelectorAll(".collections-tab");
+    const cards = document.querySelectorAll(".collection-card");
+
+    tabs.forEach((tab) => {
+      tab.addEventListener("click", () => {
+        const filter = tab.getAttribute("data-filter");
+
+        tabs.forEach((t) => t.classList.remove("active"));
+        tab.classList.add("active");
+
+        cards.forEach((card) => {
+          const collection = card.getAttribute("data-collection");
+          if (filter === "all" || collection === filter) {
+            card.style.display = "flex";
+          } else {
+            card.style.display = "none";
+          }
+        });
+      });
+    });
+
+    // Scroll animations
+    const animatedElements = document.querySelectorAll(".animate-on-scroll");
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("in-view");
+          }
+        });
+      },
+      {
+        threshold: 0.15,
+      }
+    );
+
+    animatedElements.forEach((el) => observer.observe(el));
+  </script>
+</body>
+
+</html>

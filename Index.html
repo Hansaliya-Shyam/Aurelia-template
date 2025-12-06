@@ -1,0 +1,1293 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aurelia Jewelry | Luxury Minimalist Jewelry</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@300;400;500&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --color-primary: #d4af37;
+            --color-primary-light: #e8d9a7;
+            --color-secondary: #a89f91;
+            --color-dark: #1a1a1a;
+            --color-light: #f8f7f4;
+            --color-white: #ffffff;
+            --font-heading: 'Cormorant Garamond', serif;
+            --font-body: 'Inter', sans-serif;
+            --shadow-light: 0 4px 20px rgba(0, 0, 0, 0.05);
+            --shadow-medium: 0 8px 30px rgba(0, 0, 0, 0.08);
+            --border-radius: 8px;
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-body);
+            color: var(--color-dark);
+            background-color: var(--color-white);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            font-family: var(--font-heading);
+            font-weight: 600;
+            line-height: 1.3;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* Header Styles */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: var(--color-white);
+            box-shadow: var(--shadow-light);
+            z-index: 1000;
+            padding: 16px 0;
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: var(--font-heading);
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--color-dark);
+            text-decoration: none;
+        }
+
+        .logo span {
+            color: var(--color-primary);
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 36px;
+        }
+
+        .nav-link {
+            text-decoration: none;
+            color: var(--color-dark);
+            font-weight: 500;
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .nav-link:hover {
+            color: var(--color-primary);
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background-color: var(--color-primary);
+            transition: var(--transition);
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        .nav-icons {
+            display: flex;
+            gap: 20px;
+        }
+
+        .nav-icon {
+            color: var(--color-dark);
+            font-size: 18px;
+            transition: var(--transition);
+        }
+
+        .nav-icon:hover {
+            color: var(--color-primary);
+        }
+
+        .hamburger {
+            display: none;
+            cursor: pointer;
+            font-size: 24px;
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 160px 0 100px;
+            background: linear-gradient(135deg, rgba(248, 247, 244, 0.9) 0%, rgba(248, 247, 244, 0.7) 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .hero-content h1 {
+            font-size: 56px;
+            margin-bottom: 20px;
+            color: var(--color-dark);
+        }
+
+        .hero-content p {
+            font-size: 18px;
+            color: var(--color-secondary);
+            margin-bottom: 32px;
+            max-width: 500px;
+        }
+
+        .hero-image {
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--shadow-medium);
+            position: relative;
+        }
+
+        .hero-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: var(--transition);
+        }
+
+        .hero-image:hover img {
+            transform: scale(1.02);
+        }
+
+        /* Button Styles */
+        .btn {
+            display: inline-block;
+            padding: 14px 32px;
+            border-radius: var(--border-radius);
+            font-weight: 500;
+            text-decoration: none;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+            font-family: var(--font-body);
+        }
+
+        .btn-primary {
+            background-color: var(--color-primary);
+            color: var(--color-white);
+        }
+
+        .btn-primary:hover {
+            background-color: #c19b2c;
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-medium);
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            color: var(--color-dark);
+            border: 1px solid var(--color-dark);
+        }
+
+        .btn-outline:hover {
+            background-color: var(--color-dark);
+            color: var(--color-white);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-medium);
+        }
+
+        /* Section Styles */
+        .section {
+            padding: 100px 0;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-header h2 {
+            font-size: 42px;
+            margin-bottom: 16px;
+            color: var(--color-dark);
+        }
+
+        .section-header p {
+            color: var(--color-secondary);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Features */
+        .features {
+            background-color: var(--color-light);
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+        }
+
+        .feature-card {
+            text-align: center;
+            padding: 40px 24px;
+            background-color: var(--color-white);
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow-light);
+            transition: var(--transition);
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-medium);
+        }
+
+        .feature-icon {
+            font-size: 36px;
+            color: var(--color-primary);
+            margin-bottom: 20px;
+        }
+
+        .feature-card h3 {
+            font-size: 22px;
+            margin-bottom: 12px;
+        }
+
+        .feature-card p {
+            color: var(--color-secondary);
+            font-size: 15px;
+        }
+
+        /* About Section */
+        .about {
+            padding: 100px 0;
+        }
+
+        .about-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .about-image {
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--shadow-medium);
+        }
+
+        .about-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .about-content h2 {
+            font-size: 42px;
+            margin-bottom: 20px;
+        }
+
+        .about-content p {
+            color: var(--color-secondary);
+            margin-bottom: 24px;
+        }
+
+        /* Product Grid */
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px 30px;
+        }
+
+        .product-card {
+            background-color: var(--color-white);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--shadow-light);
+            transition: var(--transition);
+        }
+
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-medium);
+        }
+
+        .product-image {
+            height: 300px;
+            overflow: hidden;
+        }
+
+        .product-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .product-card:hover .product-image img {
+            transform: scale(1.05);
+        }
+
+        .product-info {
+            padding: 24px;
+        }
+
+        .product-title {
+            font-size: 20px;
+            margin-bottom: 8px;
+        }
+
+        .product-price {
+            font-size: 18px;
+            color: var(--color-primary);
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+
+        /* Rating Stars */
+        .rating {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            margin-bottom: 16px;
+        }
+
+        .star {
+            color: var(--color-primary-light);
+        }
+
+        .star.filled {
+            color: var(--color-primary);
+        }
+
+        /* Categories */
+        .categories {
+            background-color: var(--color-light);
+        }
+
+        .categories-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+        }
+
+        .category-card {
+            text-align: center;
+            padding: 40px 20px;
+            background-color: var(--color-white);
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow-light);
+            transition: var(--transition);
+            text-decoration: none;
+            color: var(--color-dark);
+        }
+
+        .category-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-medium);
+        }
+
+        .category-icon {
+            font-size: 40px;
+            color: var(--color-primary);
+            margin-bottom: 20px;
+        }
+
+        .category-card h3 {
+            font-size: 22px;
+        }
+
+        /* Testimonials */
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+
+        .testimonial-card {
+            padding: 40px 30px;
+            background-color: var(--color-white);
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow-light);
+            transition: var(--transition);
+        }
+
+        .testimonial-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-medium);
+        }
+
+        .testimonial-text {
+            font-style: italic;
+            margin-bottom: 24px;
+            color: var(--color-secondary);
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .author-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: var(--color-primary-light);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            color: var(--color-dark);
+        }
+
+        .author-info h4 {
+            font-size: 18px;
+            margin-bottom: 4px;
+        }
+
+        .author-info p {
+            color: var(--color-secondary);
+            font-size: 14px;
+        }
+
+        /* Featured Product */
+        .featured-product {
+            background-color: var(--color-light);
+        }
+
+        .featured-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .featured-image {
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--shadow-medium);
+        }
+
+        .featured-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .featured-content h2 {
+            font-size: 42px;
+            margin-bottom: 16px;
+        }
+
+        .featured-price {
+            font-size: 28px;
+            color: var(--color-primary);
+            font-weight: 600;
+            margin-bottom: 24px;
+        }
+
+        /* FAQ Accordion */
+        .faq-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            border-bottom: 1px solid #eaeaea;
+            margin-bottom: 16px;
+            padding-bottom: 16px;
+        }
+
+        .faq-question {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+            cursor: pointer;
+        }
+
+        .faq-question h3 {
+            font-size: 20px;
+            font-weight: 500;
+        }
+
+        .faq-toggle {
+            font-size: 20px;
+            color: var(--color-primary);
+            transition: var(--transition);
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+            color: var(--color-secondary);
+        }
+
+        .faq-item.active .faq-answer {
+            max-height: 200px;
+            margin-bottom: 20px;
+        }
+
+        .faq-item.active .faq-toggle {
+            transform: rotate(45deg);
+        }
+
+        /* Blog Cards */
+        .blog-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px 30px;
+        }
+
+        .blog-card {
+            background-color: var(--color-white);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--shadow-light);
+            transition: var(--transition);
+        }
+
+        .blog-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-medium);
+        }
+
+        .blog-image {
+            height: 220px;
+            overflow: hidden;
+        }
+
+        .blog-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .blog-card:hover .blog-image img {
+            transform: scale(1.05);
+        }
+
+        .blog-info {
+            padding: 24px;
+        }
+
+        .blog-date {
+            color: var(--color-secondary);
+            font-size: 14px;
+            margin-bottom: 12px;
+        }
+
+        .blog-title {
+            font-size: 20px;
+            margin-bottom: 12px;
+        }
+
+        .blog-excerpt {
+            color: var(--color-secondary);
+            margin-bottom: 16px;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--color-dark);
+            color: var(--color-white);
+            padding: 80px 0 40px;
+        }
+
+        .footer-container {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 60px;
+            margin-bottom: 60px;
+        }
+
+        .footer-logo {
+            font-family: var(--font-heading);
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--color-white);
+            margin-bottom: 20px;
+        }
+
+        .footer-logo span {
+            color: var(--color-primary);
+        }
+
+        .footer-about p {
+            color: #aaa;
+            margin-bottom: 24px;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 16px;
+        }
+
+        .social-icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.1);
+            color: var(--color-white);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .social-icon:hover {
+            background-color: var(--color-primary);
+            transform: translateY(-3px);
+        }
+
+        .footer-heading {
+            font-size: 20px;
+            margin-bottom: 24px;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+
+        .footer-links a {
+            color: #aaa;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .footer-links a:hover {
+            color: var(--color-primary);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 40px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #aaa;
+            font-size: 14px;
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 1024px) {
+
+            .features-grid,
+            .categories-grid,
+            .testimonials-grid,
+            .blog-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .product-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .footer-container {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hamburger {
+                display: block;
+            }
+
+            .nav-menu {
+                position: fixed;
+                top: 80px;
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - 80px);
+                background-color: var(--color-white);
+                flex-direction: column;
+                align-items: center;
+                justify-content: flex-start;
+                padding-top: 40px;
+                gap: 30px;
+                transition: var(--transition);
+            }
+
+            .nav-menu.active {
+                left: 0;
+            }
+
+            .hero-container,
+            .about-container,
+            .featured-container {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .hero {
+                padding: 140px 0 80px;
+            }
+
+            .hero-content h1 {
+                font-size: 42px;
+            }
+
+            .section-header h2 {
+                font-size: 36px;
+            }
+        }
+
+        @media (max-width: 640px) {
+
+            .features-grid,
+            .categories-grid,
+            .testimonials-grid,
+            .blog-grid,
+            .product-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-container {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .section {
+                padding: 80px 0;
+            }
+
+            .hero-content h1 {
+                font-size: 36px;
+            }
+        }
+
+        /* Utility Classes */
+        .text-center {
+            text-align: center;
+        }
+
+        .mb-4 {
+            margin-bottom: 16px;
+        }
+
+        .mb-8 {
+            margin-bottom: 32px;
+        }
+
+        .mt-8 {
+            margin-top: 32px;
+        }
+
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <a href="index.html" class="logo">Aurelia<span>.</span></a>
+
+            <div class="hamburger">
+                <i class="fas fa-bars"></i>
+            </div>
+
+            <nav class="nav-menu">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="shop.html" class="nav-link">Shop</a>
+                <a href="collections.html" class="nav-link">Collections</a>
+                <a href="about.html" class="nav-link">About</a>
+                <a href="blog.html" class="nav-link">Blog</a>
+                <a href="contact.html" class="nav-link">Contact</a>
+            </nav>
+
+            <div class="nav-icons">
+                <a href="#" class="nav-icon"><i class="fas fa-search"></i></a>
+                <a href="#" class="nav-icon"><i class="fas fa-user"></i></a>
+                <a href="#" class="nav-icon"><i class="fas fa-shopping-bag"></i></a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container hero-container">
+            <div class="hero-content">
+                <h1>Elegant Jewelry for Timeless Moments</h1>
+                <p>Discover our exclusive collection of handcrafted jewelry, designed to capture the essence of
+                    sophistication and luxury.</p>
+                <a href="shop.html" class="btn btn-primary">Shop Collection</a>
+            </div>
+            <div class="hero-image">
+                <img src="images/hero-aurelia.jpg" alt="Luxury Jewelry">
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="section features">
+        <div class="container">
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-shipping-fast"></i>
+                    </div>
+                    <h3>Free Shipping</h3>
+                    <p>Complimentary worldwide shipping on all orders over $150.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-gem"></i>
+                    </div>
+                    <h3>Exclusive Design</h3>
+                    <p>Unique jewelry pieces crafted by our expert designers.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-gift"></i>
+                    </div>
+                    <h3>Premium Packaging</h3>
+                    <p>Each piece arrives in our signature luxury gift box.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-award"></i>
+                    </div>
+                    <h3>High Quality</h3>
+                    <p>Made with ethically sourced gemstones and precious metals.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="section about" id="about">
+        <div class="container about-container">
+            <div class="about-image">
+                <img src="images/about-crafting.jpg" alt="Jewelry Crafting">
+            </div>
+            <div class="about-content">
+                <h2>Our Brand Story</h2>
+                <p>Founded in 2010, Aurelia Jewelry began with a simple vision: to create timeless pieces that celebrate
+                    life's most precious moments. Each piece is designed with intention and crafted with precision.</p>
+                <p>Our designers draw inspiration from nature, architecture, and the subtle elegance of minimalist
+                    aesthetics. We work with master jewelers who bring decades of experience to every creation.</p>
+                <a href="about.html" class="btn btn-outline">Read Our Story</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Product Grid -->
+    <section class="section" id="shop">
+        <div class="container">
+            <div class="section-header">
+                <h2>Featured Collection</h2>
+                <p>Discover our most sought-after jewelry pieces, each telling a unique story of craftsmanship and
+                    elegance.</p>
+            </div>
+            <div class="product-grid">
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="images/product-solitaire-ring.jpg" alt="Diamond Ring">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">Solitaire Diamond Ring</h3>
+                        <div class="rating">
+                            <span class="star filled"><i class="fas fa-star"></i></span>
+                            <span class="star filled"><i class="fas fa-star"></i></span>
+                            <span class="star filled"><i class="fas fa-star"></i></span>
+                            <span class="star filled"><i class="fas fa-star"></i></span>
+                            <span class="star"><i class="fas fa-star"></i></span>
+                            <span class="rating-count">(42)</span>
+                        </div>
+                        <p class="product-price">$1,850</p>
+                        <a href="#" class="btn btn-outline">View Details</a>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="images/Pearl & Diamond Necklace.jpg" alt="Pearl & Diamond Necklace" />
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">Pearl & Diamond Necklace</h3>
+                        <div class="rating">
+                            <span class="star filled"><i class="fas fa-star"></i></span>
+                            <span class="star filled"><i class="fas fa-star"></i></span>
+                            <span class="star filled"><i class="fas fa-star"></i></span>
+                            <span class="star filled"><i class="fas fa-star"></i></span>
+                            <span class="star filled"><i class="fas fa-star"></i></span>
+                            <span class="rating-count">(56)</span>
+                        </div>
+                        <p class="product-price">$2,450</p>
+                        <a href="#" class="btn btn-outline">View Details</a>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="images/product-gold-bracelet.jpg" alt="Gold Bracelet">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">18K Gold Bracelet</h3>
+                        <div class="rating">
+                            <span class="star filled"><i class="fas fa-star"></i></span>
+                            <span class="star filled"><i class="fas fa-star"></i></span>
+                            <span class="star filled"><i class="fas fa-star"></i></span>
+                            <span class="star filled"><i class="fas fa-star"></i></span>
+                            <span class="star"><i class="fas fa-star"></i></span>
+                            <span class="rating-count">(38)</span>
+                        </div>
+                        <p class="product-price">$1,250</p>
+                        <a href="#" class="btn btn-outline">View Details</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Categories -->
+    <section class="section categories">
+        <div class="container">
+            <div class="section-header">
+                <h2>Shop by Category</h2>
+                <p>Browse our curated collections to find the perfect piece for any occasion.</p>
+            </div>
+            <div class="categories-grid">
+                <a href="#" class="category-card">
+                    <div class="category-icon">
+                        <i class="far fa-gem"></i>
+                    </div>
+                    <h3>Rings</h3>
+                </a>
+                <a href="#" class="category-card">
+                    <div class="category-icon">
+                        <i class="fas fa-ring"></i>
+                    </div>
+                    <h3>Necklaces</h3>
+                </a>
+                <a href="#" class="category-card">
+                    <div class="category-icon">
+                        <i class="fas fa-link"></i>
+                    </div>
+                    <h3>Bracelets</h3>
+                </a>
+                <a href="#" class="category-card">
+                    <div class="category-icon">
+                        <i class="fas fa-circle-notch"></i>
+                    </div>
+                    <h3>Earrings</h3>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Client Testimonials</h2>
+                <p>Discover what our clients have to say about their Aurelia experience.</p>
+            </div>
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <p class="testimonial-text">"The attention to detail is exceptional. My engagement ring receives
+                        compliments daily. The entire experience from purchase to delivery was flawless."</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">SJ</div>
+                        <div class="author-info">
+                            <h4>Sarah Johnson</h4>
+                            <p>Los Angeles, CA</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <p class="testimonial-text">"I purchased a necklace for my wife's birthday. The quality is
+                        outstanding and the packaging made it feel like a truly special gift. Highly recommend!"</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">MR</div>
+                        <div class="author-info">
+                            <h4>Michael Roberts</h4>
+                            <p>New York, NY</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <p class="testimonial-text">"As a jewelry collector, I'm particular about craftsmanship. Aurelia
+                        exceeds expectations with every piece. Their customer service is also exceptional."</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">ED</div>
+                        <div class="author-info">
+                            <h4>Emily Davis</h4>
+                            <p>Chicago, IL</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Product -->
+    <section class="section featured-product">
+        <div class="container featured-container">
+            <div class="featured-image">
+                <img src="images/featured-emerald-collection.jpg" alt="Emerald Collection">
+            </div>
+            <div class="featured-content">
+                <h2>Emerald Collection</h2>
+                <div class="rating mb-4">
+                    <span class="star filled"><i class="fas fa-star"></i></span>
+                    <span class="star filled"><i class="fas fa-star"></i></span>
+                    <span class="star filled"><i class="fas fa-star"></i></span>
+                    <span class="star filled"><i class="fas fa-star"></i></span>
+                    <span class="star"><i class="fas fa-star"></i></span>
+                    <span class="rating-count">(67 reviews)</span>
+                </div>
+                <p class="mb-8">Our Emerald Collection features ethically sourced emeralds set in 18k gold. Each piece
+                    is handcrafted by our master jewelers, creating a timeless treasure to be passed down through
+                    generations.</p>
+                <p class="featured-price">From $2,850</p>
+                <a href="#" class="btn btn-primary">View Collection</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Accordion -->
+    <section class="section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Frequently Asked Questions</h2>
+                <p>Find answers to common questions about our products and services.</p>
+            </div>
+            <div class="faq-container">
+                <div class="faq-item active">
+                    <div class="faq-question">
+                        <h3>What is your return policy?</h3>
+                        <span class="faq-toggle"><i class="fas fa-plus"></i></span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>We offer a 30-day return policy for all unworn items in their original condition with tags
+                            attached. Custom pieces and engraved items are final sale. Returns are processed within 5-7
+                            business days after we receive the item.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>Do you offer ring resizing?</h3>
+                        <span class="faq-toggle"><i class="fas fa-plus"></i></span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Yes, we offer complimentary ring resizing within the first 60 days of purchase. After that
+                            period, resizing services are available for a small fee. Please contact our customer service
+                            team to arrange resizing for your ring.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>How do I care for my jewelry?</h3>
+                        <span class="faq-toggle"><i class="fas fa-plus"></i></span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>We recommend storing each piece separately in a soft pouch or jewelry box to prevent
+                            scratches. Clean with a soft, lint-free cloth. Avoid exposure to harsh chemicals, perfumes,
+                            and lotions. For deep cleaning, we offer professional cleaning services.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>Do you offer custom design services?</h3>
+                        <span class="faq-toggle"><i class="fas fa-plus"></i></span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Yes, we work with clients to create custom jewelry pieces. Our design process begins with a
+                            consultation to understand your vision, followed by sketches and 3D renderings before
+                            crafting begins. Custom projects typically take 4-8 weeks.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Latest Blog -->
+    <section class="section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Latest From Our Blog</h2>
+                <p>Discover styling tips, jewelry care guides, and behind-the-scenes stories from our atelier.</p>
+            </div>
+            <div class="blog-grid">
+                <div class="blog-card">
+                    <div class="blog-image">
+                        <img src="images/blog-jewelry-care.jpg" alt="Jewelry Care">
+                    </div>
+                    <div class="blog-info">
+                        <p class="blog-date">June 12, 2023</p>
+                        <h3 class="blog-title">How to Properly Care for Your Jewelry</h3>
+                        <p class="blog-excerpt">Learn essential tips for maintaining the brilliance of your precious
+                            jewelry pieces for years to come.</p>
+                        <a href="#" class="btn btn-outline">Read More</a>
+                    </div>
+                </div>
+                <div class="blog-card">
+                    <div class="blog-image">
+                        <img src="images/blog-diamond-guide.jpg" alt="Diamond Guide">
+                    </div>
+                    <div class="blog-info">
+                        <p class="blog-date">May 28, 2023</p>
+                        <h3 class="blog-title">Understanding Diamond Quality: The 4 C's</h3>
+                        <p class="blog-excerpt">A comprehensive guide to carat, cut, color, and clarity when selecting
+                            the perfect diamond.</p>
+                        <a href="#" class="btn btn-outline">Read More</a>
+                    </div>
+                </div>
+                <div class="blog-card">
+                    <div class="blog-image">
+                        <img src="images/blog-wedding-jewelry.jpg" alt="Wedding Jewelry">
+                    </div>
+                    <div class="blog-info">
+                        <p class="blog-date">April 15, 2023</p>
+                        <h3 class="blog-title">Choosing the Perfect Wedding Jewelry</h3>
+                        <p class="blog-excerpt">Expert advice on selecting jewelry that complements your wedding dress
+                            and personal style.</p>
+                        <a href="#" class="btn btn-outline">Read More</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-container">
+                <div class="footer-about">
+                    <div class="footer-logo">Aurelia<span>.</span></div>
+                    <p>Luxury minimalist jewelry crafted with precision and passion. Each piece tells a story of
+                        elegance and timeless beauty.</p>
+                    <div class="social-icons">
+                        <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-pinterest"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+                <div>
+                    <h3 class="footer-heading">Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="shop.html">Shop</a></li>
+                        <li><a href="collections.html">Collections</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="blog.html">Blog</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="footer-heading">Help</h3>
+                    <ul class="footer-links">
+                        <li><a href="faq.html">FAQ</a></li>
+                        <li><a href="#">Shipping & Returns</a></li>
+                        <li><a href="#">Size Guide</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="footer-heading">Store Info</h3>
+                    <ul class="footer-links">
+                        <li><i class="fas fa-map-marker-alt"></i> 123 Luxury Avenue, New York, NY</li>
+                        <li><i class="fas fa-phone"></i> +1 (555) 123-4567</li>
+                        <li><i class="fas fa-envelope"></i> info@aurelia.com</li>
+                        <li><i class="fas fa-clock"></i> Mon-Fri: 10am-7pm</li>
+                        <li><i class="fas fa-clock"></i> Sat-Sun: 11am-5pm</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 Aurelia Jewelry. All rights reserved. | Luxury Jewelry Boutique</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Navigation Toggle
+        const hamburger = document.querySelector('.hamburger');
+        const navMenu = document.querySelector('.nav-menu');
+
+        hamburger.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+            hamburger.querySelector('i').classList.toggle('fa-bars');
+            hamburger.querySelector('i').classList.toggle('fa-times');
+        });
+
+        // Close mobile menu when clicking on a link
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', () => {
+                navMenu.classList.remove('active');
+                hamburger.querySelector('i').classList.add('fa-bars');
+                hamburger.querySelector('i').classList.remove('fa-times');
+            });
+        });
+
+        // FAQ Accordion
+        document.querySelectorAll('.faq-question').forEach(question => {
+            question.addEventListener('click', () => {
+                const item = question.parentElement;
+                item.classList.toggle('active');
+
+                const toggle = question.querySelector('.faq-toggle');
+                toggle.innerHTML = item.classList.contains('active') ? '<i class="fas fa-times"></i>' : '<i class="fas fa-plus"></i>';
+            });
+        });
+
+        // Simple image lazy loading
+        document.addEventListener('DOMContentLoaded', function () {
+            const images = document.querySelectorAll('img');
+            images.forEach(img => {
+                if (img.complete) {
+                    img.classList.add('loaded');
+                } else {
+                    img.addEventListener('load', function () {
+                        this.classList.add('loaded');
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>

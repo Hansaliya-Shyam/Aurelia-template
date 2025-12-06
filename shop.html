@@ -1,0 +1,1230 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Shop | Aurelia Jewelry</title>
+
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@300;400;500&display=swap"
+        rel="stylesheet" />
+
+    <style>
+        :root {
+            --color-primary: #d4af37;
+            --color-primary-light: #e8d9a7;
+            --color-secondary: #a89f91;
+            --color-dark: #1a1a1a;
+            --color-light: #f8f7f4;
+            --color-white: #ffffff;
+            --font-heading: "Cormorant Garamond", serif;
+            --font-body: "Inter", sans-serif;
+            --shadow-light: 0 4px 20px rgba(0, 0, 0, 0.05);
+            --shadow-medium: 0 8px 30px rgba(0, 0, 0, 0.12);
+            --border-radius: 10px;
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-body);
+            color: var(--color-dark);
+            background-color: var(--color-white);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            font-family: var(--font-heading);
+            font-weight: 600;
+            line-height: 1.2;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* HEADER */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: var(--color-white);
+            box-shadow: var(--shadow-light);
+            z-index: 1000;
+            padding: 14px 0;
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: var(--font-heading);
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--color-dark);
+            text-decoration: none;
+            letter-spacing: 1px;
+        }
+
+        .logo span {
+            color: var(--color-primary);
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 32px;
+            align-items: center;
+        }
+
+        .nav-link {
+            position: relative;
+            font-size: 15px;
+            text-decoration: none;
+            color: var(--color-dark);
+            font-weight: 500;
+            transition: var(--transition);
+        }
+
+        .nav-link::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: -4px;
+            width: 0;
+            height: 1px;
+            background-color: var(--color-primary);
+            transition: var(--transition);
+        }
+
+        .nav-link:hover {
+            color: var(--color-primary);
+        }
+
+        .nav-link:hover::after,
+        .nav-link.active::after {
+            width: 100%;
+        }
+
+        .nav-link.active {
+            color: var(--color-primary);
+        }
+
+        .nav-icons {
+            display: flex;
+            gap: 18px;
+            align-items: center;
+        }
+
+        .nav-icon {
+            color: var(--color-dark);
+            font-size: 17px;
+            transition: var(--transition);
+        }
+
+        .nav-icon:hover {
+            color: var(--color-primary);
+            transform: translateY(-1px);
+        }
+
+        .hamburger {
+            display: none;
+            cursor: pointer;
+            font-size: 22px;
+        }
+
+        /* BUTTONS */
+        .btn {
+            display: inline-block;
+            padding: 12px 28px;
+            border-radius: 999px;
+            border: none;
+            cursor: pointer;
+            font-family: var(--font-body);
+            font-size: 14px;
+            font-weight: 500;
+            letter-spacing: 0.03em;
+            text-transform: uppercase;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .btn-primary {
+            background-color: var(--color-primary);
+            color: var(--color-white);
+            box-shadow: var(--shadow-light);
+        }
+
+        .btn-primary:hover {
+            background-color: #c19b2c;
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-medium);
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            color: var(--color-dark);
+            border: 1px solid var(--color-dark);
+        }
+
+        .btn-outline:hover {
+            background-color: var(--color-dark);
+            color: var(--color-white);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-medium);
+        }
+
+        /* PAGE HERO */
+        .page-hero {
+            padding: 160px 0 110px;
+            text-align: center;
+            color: var(--color-dark);
+            background:
+                linear-gradient(135deg,
+                    rgba(248, 247, 244, 0.96) 0%,
+                    rgba(248, 247, 244, 0.88) 35%,
+                    rgba(255, 255, 255, 0.9) 100%),
+                url("https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80") center / cover no-repeat;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .page-hero::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle at top left,
+                    rgba(212, 175, 55, 0.15),
+                    transparent 60%);
+            pointer-events: none;
+        }
+
+        .page-hero .container {
+            position: relative;
+            z-index: 1;
+            animation: fade-down 0.8s ease-out both;
+        }
+
+        .page-hero h1 {
+            font-size: 52px;
+            margin-bottom: 16px;
+            letter-spacing: 0.04em;
+        }
+
+        .page-hero p {
+            font-size: 18px;
+            color: var(--color-secondary);
+            max-width: 640px;
+            margin: 0 auto;
+        }
+
+        /* SECTION BASE */
+        .section {
+            padding: 90px 0;
+        }
+
+        /* SHOP LAYOUT */
+        .shop-container {
+            display: grid;
+            grid-template-columns: 280px 1fr;
+            gap: 50px;
+            align-items: flex-start;
+        }
+
+        /* SIDEBAR */
+        .sidebar {
+            background-color: var(--color-light);
+            padding: 32px 26px;
+            border-radius: 18px;
+            box-shadow: var(--shadow-light);
+            position: sticky;
+            top: 108px;
+            animation: fade-in 0.7s ease-out both;
+        }
+
+        .sidebar h3 {
+            font-size: 22px;
+            margin-bottom: 22px;
+            padding-bottom: 14px;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+        }
+
+        .filter-group {
+            margin-bottom: 26px;
+        }
+
+        .filter-group h4 {
+            font-size: 16px;
+            margin-bottom: 10px;
+            color: var(--color-dark);
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            font-weight: 500;
+        }
+
+        .filter-options {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .filter-option {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            cursor: pointer;
+            font-size: 14px;
+            color: var(--color-secondary);
+            transition: var(--transition);
+        }
+
+        .filter-option:hover {
+            color: var(--color-dark);
+            transform: translateX(2px);
+        }
+
+        .filter-checkbox {
+            width: 18px;
+            height: 18px;
+            border: 1px solid var(--color-secondary);
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: var(--color-white);
+            transition: var(--transition);
+            font-size: 12px;
+        }
+
+        .filter-checkbox.checked {
+            background-color: var(--color-primary);
+            border-color: var(--color-primary);
+            color: #fff;
+            box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.18);
+        }
+
+        .filter-checkbox.checked::after {
+            content: "✓";
+        }
+
+        .price-range {
+            width: 100%;
+            margin-top: 10px;
+            accent-color: var(--color-primary);
+        }
+
+        .price-inputs {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 10px;
+            gap: 10px;
+        }
+
+        .price-input {
+            width: 50%;
+            padding: 8px 10px;
+            border: 1px solid var(--color-secondary);
+            border-radius: 999px;
+            font-family: var(--font-body);
+            font-size: 13px;
+            outline: none;
+            transition: var(--transition);
+            background-color: #fff;
+        }
+
+        .price-input:focus {
+            border-color: var(--color-primary);
+            box-shadow: 0 0 0 2px rgba(212, 175, 55, 0.25);
+        }
+
+        /* PRODUCT GRID & CARDS */
+        .shop-content {
+            animation: fade-in-up 0.7s ease-out 0.1s both;
+        }
+
+        .product-grid-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+            gap: 16px;
+        }
+
+        .product-grid-header h2 {
+            font-size: 28px;
+        }
+
+        #productCount {
+            font-family: var(--font-body);
+            font-size: 14px;
+            color: var(--color-secondary);
+            margin-left: 8px;
+        }
+
+        .sort-select {
+            padding: 10px 20px;
+            border-radius: 999px;
+            border: 1px solid var(--color-secondary);
+            font-family: var(--font-body);
+            font-size: 14px;
+            background-color: var(--color-white);
+            outline: none;
+            transition: var(--transition);
+            cursor: pointer;
+        }
+
+        .sort-select:hover,
+        .sort-select:focus {
+            border-color: var(--color-primary);
+            box-shadow: 0 0 0 2px rgba(212, 175, 55, 0.18);
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 32px 24px;
+        }
+
+        .product-card {
+            background-color: var(--color-white);
+            border-radius: 18px;
+            overflow: hidden;
+            box-shadow: var(--shadow-light);
+            transition: var(--transition);
+            transform: translateY(0);
+            position: relative;
+        }
+
+        .product-card::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top,
+                    rgba(0, 0, 0, 0.06),
+                    transparent 60%);
+            opacity: 0;
+            transition: var(--transition);
+            pointer-events: none;
+        }
+
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-medium);
+        }
+
+        .product-card:hover::before {
+            opacity: 1;
+        }
+
+        .product-image {
+            height: 260px;
+            overflow: hidden;
+        }
+
+        .product-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .product-card:hover .product-image img {
+            transform: scale(1.06);
+        }
+
+        .product-info {
+            padding: 20px 22px 24px;
+        }
+
+        .product-title {
+            font-size: 18px;
+            margin-bottom: 6px;
+        }
+
+        .product-price {
+            font-size: 18px;
+            color: var(--color-primary);
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+
+        .rating {
+            display: inline-flex;
+            align-items: center;
+            gap: 3px;
+            margin-bottom: 12px;
+            font-size: 13px;
+        }
+
+        .star {
+            color: var(--color-primary-light);
+            font-size: 13px;
+        }
+
+        .star.filled {
+            color: var(--color-primary);
+        }
+
+        .rating-count {
+            color: var(--color-secondary);
+            margin-left: 4px;
+        }
+
+        /* PAGINATION */
+        .pagination {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 8px;
+            margin-top: 40px;
+        }
+
+        .page-link {
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            color: var(--color-dark);
+            font-size: 14px;
+            border: 1px solid transparent;
+            transition: var(--transition);
+        }
+
+        .page-link:hover {
+            border-color: var(--color-primary);
+            color: var(--color-primary);
+            transform: translateY(-1px);
+        }
+
+        .page-link.active {
+            background-color: var(--color-primary);
+            color: var(--color-white);
+            border-color: var(--color-primary);
+            box-shadow: var(--shadow-light);
+        }
+
+        /* FOOTER */
+        footer {
+            background-color: var(--color-dark);
+            color: var(--color-white);
+            padding: 70px 0 40px;
+            margin-top: 20px;
+        }
+
+        .footer-container {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-logo {
+            font-family: var(--font-heading);
+            font-size: 26px;
+            font-weight: 700;
+            margin-bottom: 16px;
+        }
+
+        .footer-logo span {
+            color: var(--color-primary);
+        }
+
+        .footer-about p {
+            color: #b5b5b5;
+            font-size: 14px;
+            margin-bottom: 18px;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 14px;
+        }
+
+        .social-icon {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            color: var(--color-white);
+            background-color: rgba(255, 255, 255, 0.06);
+            transition: var(--transition);
+            font-size: 14px;
+        }
+
+        .social-icon:hover {
+            background-color: var(--color-primary);
+            transform: translateY(-2px);
+        }
+
+        .footer-heading {
+            font-size: 18px;
+            margin-bottom: 18px;
+        }
+
+        .footer-links {
+            list-style: none;
+            font-size: 14px;
+        }
+
+        .footer-links li {
+            margin-bottom: 10px;
+            color: #b5b5b5;
+        }
+
+        .footer-links a {
+            color: #b5b5b5;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .footer-links a:hover {
+            color: var(--color-primary);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+            padding-top: 18px;
+            text-align: center;
+            font-size: 13px;
+            color: #a8a8a8;
+        }
+
+        .footer-links i {
+            margin-right: 6px;
+        }
+
+        /* ANIMATIONS */
+        @keyframes fade-in {
+            from {
+                opacity: 0;
+                transform: translateY(6px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fade-in-up {
+            from {
+                opacity: 0;
+                transform: translateY(18px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fade-down {
+            from {
+                opacity: 0;
+                transform: translateY(-18px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .animate-on-scroll.in-view {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 1024px) {
+            .shop-container {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+
+            .sidebar {
+                position: static;
+            }
+
+            .product-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+
+            .footer-container {
+                grid-template-columns: 1.6fr 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hamburger {
+                display: block;
+            }
+
+            .nav-menu {
+                position: fixed;
+                top: 70px;
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - 70px);
+                background-color: var(--color-white);
+                flex-direction: column;
+                justify-content: flex-start;
+                align-items: center;
+                padding-top: 30px;
+                gap: 24px;
+                transition: var(--transition);
+            }
+
+            .nav-menu.active {
+                left: 0;
+            }
+
+            .page-hero {
+                padding: 135px 0 80px;
+            }
+
+            .page-hero h1 {
+                font-size: 40px;
+            }
+
+            .product-grid-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .footer-container {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .page-hero h1 {
+                font-size: 32px;
+            }
+
+            .page-hero p {
+                font-size: 16px;
+            }
+
+            .section {
+                padding: 70px 0;
+            }
+
+            .product-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-container {
+                grid-template-columns: 1fr;
+                gap: 28px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <a href="index.html" class="logo">Aurelia<span>.</span></a>
+
+            <div class="hamburger">
+                <i class="fas fa-bars"></i>
+            </div>
+
+            <nav class="nav-menu">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="shop.html" class="nav-link active">Shop</a>
+                <a href="collections.html" class="nav-link">Collections</a>
+                <a href="about.html" class="nav-link">About</a>
+                <a href="blog.html" class="nav-link">Blog</a>
+                <a href="contact.html" class="nav-link">Contact</a>
+            </nav>
+
+            <div class="nav-icons">
+                <a href="#" class="nav-icon"><i class="fas fa-search"></i></a>
+                <a href="#" class="nav-icon"><i class="fas fa-user"></i></a>
+                <a href="#" class="nav-icon"><i class="fas fa-shopping-bag"></i></a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Page Hero -->
+    <section class="page-hero">
+        <div class="container">
+            <h1>Shop Our Collection</h1>
+            <p>Discover handcrafted jewelry pieces that blend timeless elegance with contemporary design.</p>
+        </div>
+    </section>
+
+    <!-- Shop Content -->
+    <section class="section">
+        <div class="container shop-container">
+            <!-- Sidebar Filters -->
+            <aside class="sidebar animate-on-scroll">
+                <h3>Filter Products</h3>
+
+                <div class="filter-group">
+                    <h4>Category</h4>
+                    <div class="filter-options">
+                        <div class="filter-option">
+                            <div class="filter-checkbox" data-filter="rings"></div>
+                            <span>Rings</span>
+                        </div>
+                        <div class="filter-option">
+                            <div class="filter-checkbox" data-filter="necklaces"></div>
+                            <span>Necklaces</span>
+                        </div>
+                        <div class="filter-option">
+                            <div class="filter-checkbox" data-filter="bracelets"></div>
+                            <span>Bracelets</span>
+                        </div>
+                        <div class="filter-option">
+                            <div class="filter-checkbox" data-filter="earrings"></div>
+                            <span>Earrings</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="filter-group">
+                    <h4>Material</h4>
+                    <div class="filter-options">
+                        <div class="filter-option">
+                            <div class="filter-checkbox" data-filter="gold"></div>
+                            <span>Gold</span>
+                        </div>
+                        <div class="filter-option">
+                            <div class="filter-checkbox" data-filter="silver"></div>
+                            <span>Silver</span>
+                        </div>
+                        <div class="filter-option">
+                            <div class="filter-checkbox" data-filter="platinum"></div>
+                            <span>Platinum</span>
+                        </div>
+                        <div class="filter-option">
+                            <div class="filter-checkbox" data-filter="rose-gold"></div>
+                            <span>Rose Gold</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="filter-group">
+                    <h4>Price Range</h4>
+                    <input type="range" min="0" max="5000" value="2500" class="price-range" id="priceRange" />
+                    <div class="price-inputs">
+                        <input type="number" min="0" max="5000" value="0" class="price-input" id="minPrice" />
+                        <input type="number" min="0" max="5000" value="5000" class="price-input" id="maxPrice" />
+                    </div>
+                </div>
+
+                <div class="filter-group">
+                    <h4>Gemstone</h4>
+                    <div class="filter-options">
+                        <div class="filter-option">
+                            <div class="filter-checkbox" data-filter="diamond"></div>
+                            <span>Diamond</span>
+                        </div>
+                        <div class="filter-option">
+                            <div class="filter-checkbox" data-filter="emerald"></div>
+                            <span>Emerald</span>
+                        </div>
+                        <div class="filter-option">
+                            <div class="filter-checkbox" data-filter="sapphire"></div>
+                            <span>Sapphire</span>
+                        </div>
+                        <div class="filter-option">
+                            <div class="filter-checkbox" data-filter="ruby"></div>
+                            <span>Ruby</span>
+                        </div>
+                        <div class="filter-option">
+                            <div class="filter-checkbox" data-filter="pearl"></div>
+                            <span>Pearl</span>
+                        </div>
+                    </div>
+                </div>
+
+                <button class="btn btn-primary" style="width: 100%;" id="applyFilters">
+                    Apply Filters
+                </button>
+                <button class="btn btn-outline" style="width: 100%; margin-top: 12px;" id="clearFilters">
+                    Clear All
+                </button>
+            </aside>
+
+            <!-- Product Grid -->
+            <div class="shop-content animate-on-scroll">
+                <div class="product-grid-header">
+                    <h2>All Products <span id="productCount">(24 items)</span></h2>
+                    <div>
+                        <select class="sort-select">
+                            <option>Sort by: Featured</option>
+                            <option>Price: Low to High</option>
+                            <option>Price: High to Low</option>
+                            <option>Newest Arrivals</option>
+                            <option>Best Sellers</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="product-grid">
+                    <div class="product-card animate-on-scroll" data-category="rings" data-material="gold"
+                        data-gemstone="diamond" data-price="1850">
+                        <div class="product-image">
+                            <img src="images/SolitaireDiamondRing.webp" alt="Pearl & Diamond Necklace" />
+                        </div>
+                        <div class="product-info">
+                            <h3 class="product-title">Solitaire Diamond Ring</h3>
+                            <div class="rating">
+                                <span class="star filled"><i class="fas fa-star"></i></span>
+                                <span class="star filled"><i class="fas fa-star"></i></span>
+                                <span class="star filled"><i class="fas fa-star"></i></span>
+                                <span class="star filled"><i class="fas fa-star"></i></span>
+                                <span class="star"><i class="fas fa-star"></i></span>
+                                <span class="rating-count">(42)</span>
+                            </div>
+                            <p class="product-price">$1,850</p>
+                            <a href="#" class="btn btn-outline">Add to Cart</a>
+                        </div>
+                    </div>
+                    <div class="product-card animate-on-scroll" data-category="necklaces" data-material="gold"
+                        data-gemstone="pearl" data-price="2450">
+                        <div class="product-image">
+                            <img src="images/Pearl & Diamond Necklace.jpg" alt="Pearl & Diamond Necklace" />
+                        </div>
+                        <div class="product-info">
+                            <h3 class="product-title">Pearl & Diamond Necklace</h3>
+                            <div class="rating">
+                                <span class="star filled"><i class="fas fa-star"></i></span>
+                                <span class="star filled"><i class="fas fa-star"></i></span>
+                                <span class="star filled"><i class="fas fa-star"></i></span>
+                                <span class="star filled"><i class="fas fa-star"></i></span>
+                                <span class="star filled"><i class="fas fa-star"></i></span>
+                                <span class="rating-count">(56)</span>
+                            </div>
+                            <p class="product-price">$2,450</p>
+                            <a href="#" class="btn btn-outline">Add to Cart</a>
+                        </div>
+                    </div>
+
+                    <div class="product-card animate-on-scroll" data-category="bracelets" data-material="gold"
+                        data-gemstone="" data-price="1250">
+                        <div class="product-image">
+                            <img src="images/18K Gold Bracelet.webp" alt="Pearl & Diamond Necklace" />
+                        </div>
+                        <div class="product-info">
+                            <h3 class="product-title">18K Gold Bracelet</h3>
+                            <div class="rating">
+                                <span class="star filled"><i class="fas fa-star"></i></span>
+                                <span class="star filled"><i class="fas fa-star"></i></span>
+                                <span class="star filled"><i class="fas fa-star"></i></span>
+                                <span class="star filled"><i class="fas fa-star"></i></span>
+                                <span class="star"><i class="fas fa-star"></i></span>
+                                <span class="rating-count">(38)</span>
+                            </div>
+                            <p class="product-price">$1,250</p>
+                            <a href="#" class="btn btn-outline">Add to Cart</a>
+                        </div>
+                    </div>
+
+                    <div class="product-card animate-on-scroll" data-category="earrings" data-material="platinum"
+                        data-gemstone="diamond" data-price="1950">
+                        <div class="product-image">
+                            <img src="images/Diamond Stud Earrings.jpg" alt="Pearl & Diamond Necklace" />
+                        </div>
+                        <div class="product-info">
+                            <h3 class="product-title">Diamond Stud Earrings</h3>
+                            <div class="rating">
+                                <span class="star filled"><i class="fas fa-star"></i></span>
+                                <span class="star filled"><i class="fas fa-star"></i></span>
+                                <span class="star filled"><i class="fas fa-star"></i></span>
+                                <span class="star filled"><i class="fas fa-star"></i></span>
+                                <span class="star filled"><i class="fas fa-star"></i></span>
+                                <span class="rating-count">(67)</span>
+                            </div>
+                            <p class="product-price">$1,950</p>
+                            <a href="#" class="btn btn-outline">Add to Cart</a>
+                        </div>
+                    </div>
+
+                    <div class="product-card animate-on-scroll" data-category="rings" data-material="rose-gold"
+                        data-gemstone="sapphire" data-price="2200">
+                        <div class="product-image">
+                            <img src="images/Sapphire & Diamond Ring.jpeg" alt="Pearl & Diamond Necklace" />
+                        </div>
+                        <div class="product-info">
+                            <h3 class="product-title">Sapphire &amp; Diamond Ring</h3>
+                            <div class="rating">
+                                <span class="star filled"><i class="fas fa-star"></i></span>
+                                <span class="star filled"><i class="fas fa-star"></i></span>
+                                <span class="star filled"><i class="fas fa-star"></i></span>
+                                <span class="star filled"><i class="fas fa-star"></i></span>
+                                <span class="star"><i class="fas fa-star"></i></span>
+                                <span class="rating-count">(29)</span>
+                            </div>
+                            <p class="product-price">$2,200</p>
+                            <a href="#" class="btn btn-outline">Add to Cart</a>
+                        </div>
+                    </div>
+
+                    <div class="product-card animate-on-scroll" data-category="necklaces" data-material="silver"
+                        data-gemstone="" data-price="850">
+                        <div class="product-image">
+                            <img src="images/Minimalist Silver Necklace.jpeg" alt="Pearl & Diamond Necklace" />
+                        </div>
+                        <div class="product-info">
+                            <h3 class="product-title">Minimalist Silver Necklace</h3>
+                            <div class="rating">
+                                <span class="star filled"><i class="fas fa-star"></i></span>
+                                <span class="star filled"><i class="fas fa-star"></i></span>
+                                <span class="star filled"><i class="fas fa-star"></i></span>
+                                <span class="star filled"><i class="fas fa-star"></i></span>
+                                <span class="star"><i class="fas fa-star"></i></span>
+                                <span class="rating-count">(51)</span>
+                            </div>
+                            <p class="product-price">$850</p>
+                            <a href="#" class="btn btn-outline">Add to Cart</a>
+                        </div>
+                    </div>
+                </div>
+
+
+                <!-- Pagination -->
+                <div class="pagination">
+                    <a href="#" class="page-link"><i class="fas fa-chevron-left"></i></a>
+                    <a href="#" class="page-link active">1</a>
+                    <a href="#" class="page-link">2</a>
+                    <a href="#" class="page-link">3</a>
+                    <a href="#" class="page-link">4</a>
+                    <a href="#" class="page-link"><i class="fas fa-chevron-right"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-container">
+                <div class="footer-about">
+                    <div class="footer-logo">Aurelia<span>.</span></div>
+                    <p>
+                        Luxury minimalist jewelry crafted with precision and passion. Each piece tells
+                        a story of elegance and timeless beauty.
+                    </p>
+                    <div class="social-icons">
+                        <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-pinterest"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+                <div>
+                    <h3 class="footer-heading">Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="shop.html">Shop</a></li>
+                        <li><a href="collections.html">Collections</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="blog.html">Blog</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="footer-heading">Help</h3>
+                    <ul class="footer-links">
+                        <li><a href="faq.html">FAQ</a></li>
+                        <li><a href="#">Shipping &amp; Returns</a></li>
+                        <li><a href="#">Size Guide</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="footer-heading">Store Info</h3>
+                    <ul class="footer-links">
+                        <li><i class="fas fa-map-marker-alt"></i> 123 Luxury Avenue, New York, NY</li>
+                        <li><i class="fas fa-phone"></i> +1 (555) 123-4567</li>
+                        <li><i class="fas fa-envelope"></i> info@aurelia.com</li>
+                        <li><i class="fas fa-clock"></i> Mon-Fri: 10am-7pm</li>
+                        <li><i class="fas fa-clock"></i> Sat-Sun: 11am-5pm</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 Aurelia Jewelry. All rights reserved. | Luxury Jewelry Boutique</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Navigation Toggle
+        const hamburger = document.querySelector(".hamburger");
+        const navMenu = document.querySelector(".nav-menu");
+
+        hamburger.addEventListener("click", () => {
+            navMenu.classList.toggle("active");
+            hamburger.querySelector("i").classList.toggle("fa-bars");
+            hamburger.querySelector("i").classList.toggle("fa-times");
+        });
+
+        // Close mobile menu when clicking on a link
+        document.querySelectorAll(".nav-link").forEach((link) => {
+            link.addEventListener("click", () => {
+                navMenu.classList.remove("active");
+                hamburger.querySelector("i").classList.add("fa-bars");
+                hamburger.querySelector("i").classList.remove("fa-times");
+            });
+        });
+
+        // Filter checkbox toggle
+        document.querySelectorAll(".filter-option").forEach((option) => {
+            option.addEventListener("click", function () {
+                const checkbox = this.querySelector(".filter-checkbox");
+                checkbox.classList.toggle("checked");
+            });
+        });
+
+        // Price range synchronization
+        const priceRange = document.getElementById("priceRange");
+        const minPrice = document.getElementById("minPrice");
+        const maxPrice = document.getElementById("maxPrice");
+
+        priceRange.addEventListener("input", function () {
+            minPrice.value = 0;
+            maxPrice.value = this.value;
+        });
+
+        minPrice.addEventListener("change", function () {
+            if (parseInt(this.value) < 0) this.value = 0;
+            if (parseInt(this.value) > parseInt(maxPrice.value)) this.value = maxPrice.value;
+            priceRange.value = maxPrice.value;
+        });
+
+        maxPrice.addEventListener("change", function () {
+            if (parseInt(this.value) > 5000) this.value = 5000;
+            if (parseInt(this.value) < parseInt(minPrice.value)) this.value = minPrice.value;
+            priceRange.value = this.value;
+        });
+
+        // Apply filters
+        document.getElementById("applyFilters").addEventListener("click", function () {
+            const checkedFilters = [];
+            document.querySelectorAll(".filter-checkbox.checked").forEach((checkbox) => {
+                checkedFilters.push(checkbox.getAttribute("data-filter"));
+            });
+
+            const minPriceValue = parseInt(minPrice.value);
+            const maxPriceValue = parseInt(maxPrice.value);
+
+            const products = document.querySelectorAll(".product-card");
+            let visibleCount = 0;
+
+            products.forEach((product) => {
+                const productPrice = parseInt(product.getAttribute("data-price"));
+                const productCategory = product.getAttribute("data-category");
+                const productMaterial = product.getAttribute("data-material");
+                const productGemstone = product.getAttribute("data-gemstone");
+
+                let shouldShow = true;
+
+                if (productPrice < minPriceValue || productPrice > maxPriceValue) {
+                    shouldShow = false;
+                }
+
+                if (checkedFilters.length > 0) {
+                    const productAttributes = [productCategory, productMaterial, productGemstone];
+                    const hasMatch = checkedFilters.some((filter) =>
+                        productAttributes.includes(filter)
+                    );
+
+                    if (!hasMatch) {
+                        shouldShow = false;
+                    }
+                }
+
+                if (shouldShow) {
+                    product.style.display = "block";
+                    visibleCount++;
+                } else {
+                    product.style.display = "none";
+                }
+            });
+
+            document.getElementById("productCount").textContent = `(${visibleCount} items)`;
+        });
+
+        // Clear filters
+        document.getElementById("clearFilters").addEventListener("click", function () {
+            document.querySelectorAll(".filter-checkbox.checked").forEach((checkbox) => {
+                checkbox.classList.remove("checked");
+            });
+
+            minPrice.value = 0;
+            maxPrice.value = 5000;
+            priceRange.value = 2500;
+
+            const products = document.querySelectorAll(".product-card");
+            products.forEach((product) => {
+                product.style.display = "block";
+            });
+
+            document.getElementById("productCount").textContent = `(24 items)`;
+        });
+
+        // Scroll animations
+        const animatedElements = document.querySelectorAll(".animate-on-scroll");
+
+        const observer = new IntersectionObserver(
+            (entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add("in-view");
+                    }
+                });
+            },
+            {
+                threshold: 0.15,
+            }
+        );
+
+        animatedElements.forEach((el) => observer.observe(el));
+    </script>
+</body>
+
+</html>

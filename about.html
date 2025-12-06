@@ -1,0 +1,898 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About Us | Aurelia Jewelry</title>
+
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@300;400;500&display=swap"
+    rel="stylesheet" />
+
+  <style>
+    :root {
+      --color-primary: #d4af37;
+      --color-primary-light: #e8d9a7;
+      --color-secondary: #a89f91;
+      --color-dark: #1a1a1a;
+      --color-light: #f8f7f4;
+      --color-white: #ffffff;
+      --font-heading: "Cormorant Garamond", serif;
+      --font-body: "Inter", sans-serif;
+      --shadow-light: 0 4px 20px rgba(0, 0, 0, 0.05);
+      --shadow-medium: 0 8px 30px rgba(0, 0, 0, 0.12);
+      --border-radius: 12px;
+      --transition: all 0.3s ease;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: var(--font-body);
+      color: var(--color-dark);
+      background-color: var(--color-white);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+      font-family: var(--font-heading);
+      font-weight: 600;
+      line-height: 1.2;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    .section {
+      padding: 90px 0;
+    }
+
+    .section-header {
+      text-align: center;
+      margin-bottom: 50px;
+    }
+
+    .section-header h2 {
+      font-size: 36px;
+      margin-bottom: 10px;
+    }
+
+    .section-header p {
+      max-width: 580px;
+      margin: 0 auto;
+      color: var(--color-secondary);
+    }
+
+    /* HEADER */
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background-color: var(--color-white);
+      box-shadow: var(--shadow-light);
+      z-index: 1000;
+      padding: 14px 0;
+    }
+
+    .header-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-family: var(--font-heading);
+      font-size: 28px;
+      font-weight: 700;
+      color: var(--color-dark);
+      text-decoration: none;
+      letter-spacing: 1px;
+    }
+
+    .logo span {
+      color: var(--color-primary);
+    }
+
+    .nav-menu {
+      display: flex;
+      gap: 32px;
+      align-items: center;
+    }
+
+    .nav-link {
+      position: relative;
+      font-size: 15px;
+      text-decoration: none;
+      color: var(--color-dark);
+      font-weight: 500;
+      transition: var(--transition);
+    }
+
+    .nav-link::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -4px;
+      width: 0;
+      height: 1px;
+      background-color: var(--color-primary);
+      transition: var(--transition);
+    }
+
+    .nav-link:hover {
+      color: var(--color-primary);
+    }
+
+    .nav-link:hover::after,
+    .nav-link.active::after {
+      width: 100%;
+    }
+
+    .nav-link.active {
+      color: var(--color-primary);
+    }
+
+    .nav-icons {
+      display: flex;
+      gap: 16px;
+      align-items: center;
+    }
+
+    .nav-icon {
+      color: var(--color-dark);
+      font-size: 17px;
+      transition: var(--transition);
+    }
+
+    .nav-icon:hover {
+      color: var(--color-primary);
+      transform: translateY(-1px);
+    }
+
+    .hamburger {
+      display: none;
+      cursor: pointer;
+      font-size: 22px;
+    }
+
+    /* PAGE HERO */
+    .page-hero {
+      padding: 160px 0 110px;
+      background:
+        linear-gradient(135deg,
+          rgba(248, 247, 244, 0.95) 0%,
+          rgba(248, 247, 244, 0.88) 40%,
+          rgba(255, 255, 255, 0.9) 100%),
+        url("https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80")
+        center/cover no-repeat;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .page-hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at top left,
+          rgba(212, 175, 55, 0.2),
+          transparent 60%);
+      pointer-events: none;
+    }
+
+    .page-hero .container {
+      position: relative;
+      z-index: 1;
+      animation: fade-down 0.8s ease-out both;
+    }
+
+    .page-hero h1 {
+      font-size: 52px;
+      margin-bottom: 16px;
+      color: var(--color-dark);
+      letter-spacing: 0.04em;
+    }
+
+    .page-hero p {
+      font-size: 18px;
+      color: var(--color-secondary);
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    /* BRAND STORY */
+    .about-container {
+      display: grid;
+      grid-template-columns: 1.1fr 1.1fr;
+      gap: 60px;
+      align-items: center;
+    }
+
+    .about-image {
+      border-radius: var(--border-radius);
+      overflow: hidden;
+      box-shadow: var(--shadow-medium);
+    }
+
+    .about-image img {
+      width: 100%;
+      height: auto;
+      display: block;
+      transition: transform 0.6s ease;
+    }
+
+    .about-image:hover img {
+      transform: scale(1.05);
+    }
+
+    .about-content h2 {
+      font-size: 40px;
+      margin-bottom: 16px;
+    }
+
+    .about-content p {
+      color: var(--color-secondary);
+      margin-bottom: 18px;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 12px 28px;
+      border-radius: 999px;
+      border: none;
+      cursor: pointer;
+      font-family: var(--font-body);
+      font-size: 14px;
+      font-weight: 500;
+      letter-spacing: 0.03em;
+      text-transform: uppercase;
+      text-decoration: none;
+      transition: var(--transition);
+    }
+
+    .btn-outline {
+      background-color: transparent;
+      color: var(--color-dark);
+      border: 1px solid var(--color-dark);
+    }
+
+    .btn-outline:hover {
+      background-color: var(--color-dark);
+      color: var(--color-white);
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-medium);
+    }
+
+    /* STATS */
+    .stats-section {
+      background-color: var(--color-light);
+      padding: 80px 0;
+    }
+
+    .stats-section .container {
+      max-width: 1100px;
+    }
+
+    .stats-row {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 40px;
+    }
+
+    .stat-item {
+      text-align: center;
+    }
+
+    .stat-number {
+      font-size: 44px;
+      font-weight: 700;
+      color: var(--color-primary);
+      margin-bottom: 8px;
+      font-family: var(--font-heading);
+    }
+
+    .stat-label {
+      font-size: 16px;
+      color: var(--color-secondary);
+    }
+
+    /* CEO SECTION */
+    .ceo-section {
+      padding: 100px 0;
+    }
+
+    .ceo-section .container {
+      display: grid;
+      grid-template-columns: 1.1fr 1.2fr;
+      gap: 60px;
+      align-items: center;
+    }
+
+    .ceo-image {
+      border-radius: var(--border-radius);
+      overflow: hidden;
+      box-shadow: var(--shadow-medium);
+    }
+
+    .ceo-image img {
+      width: 100%;
+      height: auto;
+      display: block;
+      transition: transform 0.6s ease;
+    }
+
+    .ceo-image:hover img {
+      transform: scale(1.05);
+    }
+
+    .ceo-content h2 {
+      font-size: 38px;
+      margin-bottom: 4px;
+    }
+
+    .ceo-content h3 {
+      font-size: 18px;
+      margin-bottom: 20px;
+      color: var(--color-secondary);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      font-weight: 500;
+      font-family: var(--font-body);
+    }
+
+    .ceo-content p {
+      color: var(--color-secondary);
+      margin-bottom: 18px;
+    }
+
+    .ceo-signature {
+      font-family: var(--font-heading);
+      font-size: 24px;
+      margin-top: 24px;
+      color: var(--color-primary);
+    }
+
+    /* TEAM SECTION */
+    .team-section {
+      padding: 100px 0;
+      background-color: var(--color-light);
+    }
+
+    .team-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 26px;
+    }
+
+    .team-card {
+      text-align: center;
+      padding: 34px 22px;
+      background-color: var(--color-white);
+      border-radius: var(--border-radius);
+      box-shadow: var(--shadow-light);
+      transition: var(--transition);
+    }
+
+    .team-card:hover {
+      transform: translateY(-10px);
+      box-shadow: var(--shadow-medium);
+    }
+
+    .team-avatar {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      margin: 0 auto 22px;
+      background-color: var(--color-primary-light);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    .team-avatar img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .team-card h3 {
+      font-size: 20px;
+      margin-bottom: 4px;
+    }
+
+    .team-position {
+      color: var(--color-primary);
+      font-weight: 500;
+      margin-bottom: 12px;
+      font-size: 14px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .team-bio {
+      color: var(--color-secondary);
+      font-size: 14px;
+    }
+
+    /* FOOTER */
+    footer {
+      background-color: var(--color-dark);
+      color: var(--color-white);
+      padding: 70px 0 40px;
+      margin-top: 20px;
+    }
+
+    .footer-container {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 40px;
+      margin-bottom: 40px;
+    }
+
+    .footer-logo {
+      font-family: var(--font-heading);
+      font-size: 26px;
+      font-weight: 700;
+      margin-bottom: 16px;
+    }
+
+    .footer-logo span {
+      color: var(--color-primary);
+    }
+
+    .footer-about p {
+      color: #b5b5b5;
+      font-size: 14px;
+      margin-bottom: 18px;
+    }
+
+    .social-icons {
+      display: flex;
+      gap: 14px;
+    }
+
+    .social-icon {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      color: var(--color-white);
+      background-color: rgba(255, 255, 255, 0.06);
+      transition: var(--transition);
+      font-size: 14px;
+    }
+
+    .social-icon:hover {
+      background-color: var(--color-primary);
+      transform: translateY(-2px);
+    }
+
+    .footer-heading {
+      font-size: 18px;
+      margin-bottom: 18px;
+    }
+
+    .footer-links {
+      list-style: none;
+      font-size: 14px;
+    }
+
+    .footer-links li {
+      margin-bottom: 10px;
+      color: #b5b5b5;
+    }
+
+    .footer-links a {
+      color: #b5b5b5;
+      text-decoration: none;
+      transition: var(--transition);
+    }
+
+    .footer-links a:hover {
+      color: var(--color-primary);
+    }
+
+    .footer-links i {
+      margin-right: 6px;
+    }
+
+    .footer-bottom {
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      padding-top: 18px;
+      text-align: center;
+      font-size: 13px;
+      color: #a8a8a8;
+    }
+
+    /* ANIMATIONS */
+    .animate-on-scroll {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+
+    .animate-on-scroll.in-view {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @keyframes fade-down {
+      from {
+        opacity: 0;
+        transform: translateY(-18px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 1024px) {
+      .about-container {
+        grid-template-columns: 1fr;
+      }
+
+      .ceo-section .container {
+        grid-template-columns: 1fr;
+      }
+
+      .stats-row,
+      .team-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .footer-container {
+        grid-template-columns: 1.6fr 1fr 1fr;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .hamburger {
+        display: block;
+      }
+
+      .nav-menu {
+        position: fixed;
+        top: 70px;
+        left: -100%;
+        width: 100%;
+        height: calc(100vh - 70px);
+        background-color: var(--color-white);
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+        padding-top: 30px;
+        gap: 24px;
+        transition: var(--transition);
+      }
+
+      .nav-menu.active {
+        left: 0;
+      }
+
+      .page-hero {
+        padding: 135px 0 80px;
+      }
+
+      .page-hero h1 {
+        font-size: 40px;
+      }
+
+      .footer-container {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .page-hero h1 {
+        font-size: 34px;
+      }
+
+      .page-hero p {
+        font-size: 16px;
+      }
+
+      .section {
+        padding: 70px 0;
+      }
+
+      .stats-row,
+      .team-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .footer-container {
+        grid-template-columns: 1fr;
+        gap: 28px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Header -->
+  <header>
+    <div class="container header-container">
+      <a href="index.html" class="logo">Aurelia<span>.</span></a>
+
+      <div class="hamburger">
+        <i class="fas fa-bars"></i>
+      </div>
+
+      <nav class="nav-menu">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="shop.html" class="nav-link">Shop</a>
+        <a href="collections.html" class="nav-link">Collections</a>
+        <a href="about.html" class="nav-link active">About</a>
+        <a href="blog.html" class="nav-link">Blog</a>
+        <a href="contact.html" class="nav-link">Contact</a>
+      </nav>
+
+      <div class="nav-icons">
+        <a href="#" class="nav-icon"><i class="fas fa-search"></i></a>
+        <a href="#" class="nav-icon"><i class="fas fa-user"></i></a>
+        <a href="#" class="nav-icon"><i class="fas fa-shopping-bag"></i></a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Page Hero -->
+  <section class="page-hero">
+    <div class="container">
+      <h1>Our Story</h1>
+      <p>Crafting timeless jewelry with passion, precision, and purpose since 2010.</p>
+    </div>
+  </section>
+
+  <!-- Brand Story -->
+  <section class="section">
+    <div class="container about-container animate-on-scroll">
+      <div class="about-image">
+        <img
+          src="https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80"
+          alt="Jewelry Crafting" />
+      </div>
+      <div class="about-content">
+        <h2>Our Brand Story</h2>
+        <p>Founded in 2010 by Isabella Rossi, Aurelia Jewelry began with a simple vision: to create timeless pieces that
+          celebrate life's most precious moments. What started as a small atelier in Florence has grown into an
+          internationally recognized luxury brand, yet our commitment to artisanal craftsmanship remains unchanged.</p>
+        <p>Our designers draw inspiration from nature, architecture, and the subtle elegance of minimalist aesthetics.
+          We work with master jewelers who bring decades of experience to every creation, ensuring each piece meets our
+          exacting standards of quality and beauty.</p>
+        <p>At Aurelia, we believe jewelry should be more than an accessory—it should be a tangible memory, a symbol of
+          love, and an heirloom to be passed down through generations.</p>
+        <a href="collections.html" class="btn btn-outline">View Collections</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Stats -->
+  <section class="stats-section">
+    <div class="container animate-on-scroll">
+      <div class="stats-row">
+        <div class="stat-item">
+          <div class="stat-number">13</div>
+          <div class="stat-label">Years of Excellence</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number">2,500+</div>
+          <div class="stat-label">Pieces Created</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number">42</div>
+          <div class="stat-label">Countries Served</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number">98%</div>
+          <div class="stat-label">Client Satisfaction</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CEO Section -->
+  <section class="ceo-section">
+    <div class="container animate-on-scroll">
+      <div class="ceo-image">
+        <img
+         src="images/CEO.jpeg"
+          alt="Isabella Rossi, Founder & CEO" />
+      </div>
+      <div class="ceo-content">
+        <h2>Isabella Rossi</h2>
+        <h3>Founder &amp; Creative Director</h3>
+        <p>"My journey with jewelry began as a child, watching my grandmother carefully select pieces for special
+          occasions. She taught me that jewelry isn't just about adornment—it's about storytelling, memory-making, and
+          celebrating the moments that define our lives."</p>
+        <p>"At Aurelia, we honor that tradition by creating pieces that are both contemporary and timeless. Every design
+          begins with a story, and every piece is crafted with the intention that it will become part of someone's
+          personal narrative."</p>
+        <p>"Our commitment extends beyond aesthetics. We source our materials ethically, partner with artisan workshops
+          that provide fair wages, and implement sustainable practices throughout our production process."</p>
+        <div class="ceo-signature">Isabella Rossi</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Team Preview -->
+  <section class="team-section">
+    <div class="container animate-on-scroll">
+      <div class="section-header">
+        <h2>Meet Our Master Artisans</h2>
+        <p>The talented individuals behind every Aurelia creation.</p>
+      </div>
+      <div class="team-grid">
+        <div class="team-card">
+          <div class="team-avatar">
+            <img
+              src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&q=80"
+              alt="Marco" />
+          </div>
+          <h3>Marco Ferrara</h3>
+          <div class="team-position">Master Goldsmith</div>
+          <p class="team-bio">With 25 years of experience, Marco specializes in intricate goldwork and stone setting
+            techniques passed down through generations.</p>
+        </div>
+        <div class="team-card">
+          <div class="team-avatar">
+            <img
+              src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&q=80"
+              alt="Sophie" />
+          </div>
+          <h3>Sophie Laurent</h3>
+          <div class="team-position">Lead Designer</div>
+          <p class="team-bio">Sophie's minimalist designs draw inspiration from architectural forms and natural
+            elements, creating pieces that are both modern and timeless.</p>
+        </div>
+        <div class="team-card">
+          <div class="team-avatar">
+            <img
+              src="images/James-Chen.jpg"
+              alt="James" />
+          </div>
+          <h3>James Chen</h3>
+          <div class="team-position">Gemologist</div>
+          <p class="team-bio">James ensures every stone meets our ethical and quality standards, with expertise in
+            grading diamonds and colored gemstones.</p>
+        </div>
+        <div class="team-card">
+          <div class="team-avatar">
+            <img
+              src="https://images.unsplash.com/photo-1580489944761-15a19d654956?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&q=80"
+              alt="Elena" />
+          </div>
+          <h3>Elena Vasquez</h3>
+          <div class="team-position">Wax Carver</div>
+          <p class="team-bio">Elena transforms design concepts into three-dimensional wax models, a crucial step in the
+            lost-wax casting process.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="footer-container">
+        <div class="footer-about">
+          <div class="footer-logo">Aurelia<span>.</span></div>
+          <p>
+            Luxury minimalist jewelry crafted with precision and passion. Each piece
+            tells a story of elegance and timeless beauty.
+          </p>
+          <div class="social-icons">
+            <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+            <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" class="social-icon"><i class="fab fa-pinterest"></i></a>
+            <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+          </div>
+        </div>
+        <div>
+          <h3 class="footer-heading">Quick Links</h3>
+          <ul class="footer-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="shop.html">Shop</a></li>
+            <li><a href="collections.html">Collections</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="blog.html">Blog</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="footer-heading">Help</h3>
+          <ul class="footer-links">
+            <li><a href="faq.html">FAQ</a></li>
+            <li><a href="#">Shipping &amp; Returns</a></li>
+            <li><a href="#">Size Guide</a></li>
+            <li><a href="#">Privacy Policy</a></li>
+            <li><a href="#">Terms of Service</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="footer-heading">Store Info</h3>
+          <ul class="footer-links">
+            <li><i class="fas fa-map-marker-alt"></i> 123 Luxury Avenue, New York, NY</li>
+            <li><i class="fas fa-phone"></i> +1 (555) 123-4567</li>
+            <li><i class="fas fa-envelope"></i> info@aurelia.com</li>
+            <li><i class="fas fa-clock"></i> Mon-Fri: 10am-7pm</li>
+            <li><i class="fas fa-clock"></i> Sat-Sun: 11am-5pm</li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2023 Aurelia Jewelry. All rights reserved. | Luxury Jewelry Boutique</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Mobile Navigation Toggle
+    const hamburger = document.querySelector(".hamburger");
+    const navMenu = document.querySelector(".nav-menu");
+
+    hamburger.addEventListener("click", () => {
+      navMenu.classList.toggle("active");
+      hamburger.querySelector("i").classList.toggle("fa-bars");
+      hamburger.querySelector("i").classList.toggle("fa-times");
+    });
+
+    // Close mobile menu when clicking on a link
+    document.querySelectorAll(".nav-link").forEach((link) => {
+      link.addEventListener("click", () => {
+        navMenu.classList.remove("active");
+        hamburger.querySelector("i").classList.add("fa-bars");
+        hamburger.querySelector("i").classList.remove("fa-times");
+      });
+    });
+
+    // Scroll animations
+    const animatedElements = document.querySelectorAll(".animate-on-scroll");
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("in-view");
+          }
+        });
+      },
+      {
+        threshold: 0.15,
+      }
+    );
+
+    animatedElements.forEach((el) => observer.observe(el));
+  </script>
+</body>
+
+</html>

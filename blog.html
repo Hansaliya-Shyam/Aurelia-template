@@ -1,0 +1,969 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Blog | Aurelia Jewelry</title>
+
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@300;400;500&display=swap"
+    rel="stylesheet" />
+
+  <style>
+    :root {
+      --color-primary: #d4af37;
+      --color-primary-light: #e8d9a7;
+      --color-secondary: #a89f91;
+      --color-dark: #1a1a1a;
+      --color-light: #f8f7f4;
+      --color-white: #ffffff;
+      --font-heading: "Cormorant Garamond", serif;
+      --font-body: "Inter", sans-serif;
+      --shadow-light: 0 4px 20px rgba(0, 0, 0, 0.05);
+      --shadow-medium: 0 8px 30px rgba(0, 0, 0, 0.12);
+      --border-radius: 12px;
+      --transition: all 0.3s ease;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: var(--font-body);
+      color: var(--color-dark);
+      background-color: var(--color-white);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+      font-family: var(--font-heading);
+      font-weight: 600;
+      line-height: 1.2;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    .section {
+      padding: 90px 0;
+    }
+
+    .section-header {
+      text-align: center;
+      margin-bottom: 50px;
+    }
+
+    .section-header h2 {
+      font-size: 36px;
+      margin-bottom: 10px;
+    }
+
+    .section-header p {
+      max-width: 580px;
+      margin: 0 auto;
+      color: var(--color-secondary);
+    }
+
+    /* HEADER */
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background-color: var(--color-white);
+      box-shadow: var(--shadow-light);
+      z-index: 1000;
+      padding: 14px 0;
+    }
+
+    .header-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-family: var(--font-heading);
+      font-size: 28px;
+      font-weight: 700;
+      color: var(--color-dark);
+      text-decoration: none;
+      letter-spacing: 1px;
+    }
+
+    .logo span {
+      color: var(--color-primary);
+    }
+
+    .nav-menu {
+      display: flex;
+      gap: 32px;
+      align-items: center;
+    }
+
+    .nav-link {
+      position: relative;
+      font-size: 15px;
+      text-decoration: none;
+      color: var(--color-dark);
+      font-weight: 500;
+      transition: var(--transition);
+    }
+
+    .nav-link::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -4px;
+      width: 0;
+      height: 1px;
+      background-color: var(--color-primary);
+      transition: var(--transition);
+    }
+
+    .nav-link:hover {
+      color: var(--color-primary);
+    }
+
+    .nav-link:hover::after,
+    .nav-link.active::after {
+      width: 100%;
+    }
+
+    .nav-link.active {
+      color: var(--color-primary);
+    }
+
+    .nav-icons {
+      display: flex;
+      gap: 16px;
+      align-items: center;
+    }
+
+    .nav-icon {
+      color: var(--color-dark);
+      font-size: 17px;
+      transition: var(--transition);
+    }
+
+    .nav-icon:hover {
+      color: var(--color-primary);
+      transform: translateY(-1px);
+    }
+
+    .hamburger {
+      display: none;
+      cursor: pointer;
+      font-size: 22px;
+    }
+
+    /* PAGE HERO */
+    .page-hero {
+      padding: 160px 0 110px;
+      background:
+        linear-gradient(135deg,
+          rgba(248, 247, 244, 0.95) 0%,
+          rgba(248, 247, 244, 0.88) 40%,
+          rgba(255, 255, 255, 0.9) 100%),
+        url("https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1600&q=80")
+        center/cover no-repeat;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .page-hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at top left,
+          rgba(212, 175, 55, 0.2),
+          transparent 60%);
+      pointer-events: none;
+    }
+
+    .page-hero .container {
+      position: relative;
+      z-index: 1;
+      animation: fade-down 0.8s ease-out both;
+    }
+
+    .page-hero h1 {
+      font-size: 52px;
+      margin-bottom: 16px;
+      color: var(--color-dark);
+      letter-spacing: 0.04em;
+    }
+
+    .page-hero p {
+      font-size: 18px;
+      color: var(--color-secondary);
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    /* BUTTONS */
+    .btn {
+      display: inline-block;
+      padding: 12px 28px;
+      border-radius: 999px;
+      border: none;
+      cursor: pointer;
+      font-family: var(--font-body);
+      font-size: 14px;
+      font-weight: 500;
+      letter-spacing: 0.03em;
+      text-transform: uppercase;
+      text-decoration: none;
+      transition: var(--transition);
+    }
+
+    .btn-outline {
+      background-color: transparent;
+      color: var(--color-dark);
+      border: 1px solid var(--color-dark);
+    }
+
+    .btn-outline:hover {
+      background-color: var(--color-dark);
+      color: var(--color-white);
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-medium);
+    }
+
+    .btn-primary {
+      background-color: var(--color-primary);
+      color: var(--color-white);
+      box-shadow: var(--shadow-light);
+    }
+
+    .btn-primary:hover {
+      background-color: #c19b2c;
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-medium);
+    }
+
+    /* BLOG LIST */
+    .blog-list-section {
+      background-color: var(--color-white);
+    }
+
+    .blog-header-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 30px;
+      gap: 16px;
+    }
+
+    .blog-header-row h2 {
+      font-size: 28px;
+    }
+
+    .blog-meta-filter {
+      display: flex;
+      gap: 14px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .blog-count {
+      font-size: 14px;
+      color: var(--color-secondary);
+    }
+
+    .blog-filter-select {
+      padding: 10px 16px;
+      border-radius: 999px;
+      border: 1px solid var(--color-secondary);
+      font-family: var(--font-body);
+      font-size: 14px;
+      background-color: var(--color-white);
+      outline: none;
+      transition: var(--transition);
+      cursor: pointer;
+    }
+
+    .blog-filter-select:hover,
+    .blog-filter-select:focus {
+      border-color: var(--color-primary);
+      box-shadow: 0 0 0 2px rgba(212, 175, 55, 0.18);
+    }
+
+    .blog-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 32px 24px;
+    }
+
+    .blog-card {
+      background-color: var(--color-light);
+      border-radius: 18px;
+      overflow: hidden;
+      box-shadow: var(--shadow-light);
+      transition: var(--transition);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .blog-card:hover {
+      transform: translateY(-10px);
+      box-shadow: var(--shadow-medium);
+    }
+
+    .blog-image {
+      height: 220px;
+      overflow: hidden;
+    }
+
+    .blog-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+
+    .blog-card:hover .blog-image img {
+      transform: scale(1.06);
+    }
+
+    .blog-content {
+      padding: 20px 22px 22px;
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+    }
+
+    .blog-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 13px;
+      color: var(--color-secondary);
+      margin-bottom: 10px;
+    }
+
+    .blog-category {
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      font-size: 12px;
+      color: var(--color-primary);
+      font-weight: 500;
+    }
+
+    .blog-date {
+      font-size: 13px;
+      color: var(--color-secondary);
+    }
+
+    .blog-title {
+      font-size: 20px;
+      margin-bottom: 10px;
+    }
+
+    .blog-excerpt {
+      font-size: 14px;
+      color: var(--color-secondary);
+      margin-bottom: 16px;
+      flex: 1;
+    }
+
+    .blog-readmore {
+      align-self: flex-start;
+    }
+
+    /* PAGINATION */
+    .pagination {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 8px;
+      margin-top: 40px;
+    }
+
+    .page-link {
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      color: var(--color-dark);
+      font-size: 14px;
+      border: 1px solid transparent;
+      transition: var(--transition);
+    }
+
+    .page-link:hover {
+      border-color: var(--color-primary);
+      color: var(--color-primary);
+      transform: translateY(-1px);
+    }
+
+    .page-link.active {
+      background-color: var(--color-primary);
+      color: var(--color-white);
+      border-color: var(--color-primary);
+      box-shadow: var(--shadow-light);
+    }
+
+    /* FOOTER */
+    footer {
+      background-color: var(--color-dark);
+      color: var(--color-white);
+      padding: 70px 0 40px;
+      margin-top: 20px;
+    }
+
+    .footer-container {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 40px;
+      margin-bottom: 40px;
+    }
+
+    .footer-logo {
+      font-family: var(--font-heading);
+      font-size: 26px;
+      font-weight: 700;
+      margin-bottom: 16px;
+    }
+
+    .footer-logo span {
+      color: var(--color-primary);
+    }
+
+    .footer-about p {
+      color: #b5b5b5;
+      font-size: 14px;
+      margin-bottom: 18px;
+    }
+
+    .social-icons {
+      display: flex;
+      gap: 14px;
+    }
+
+    .social-icon {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      color: var(--color-white);
+      background-color: rgba(255, 255, 255, 0.06);
+      transition: var(--transition);
+      font-size: 14px;
+    }
+
+    .social-icon:hover {
+      background-color: var(--color-primary);
+      transform: translateY(-2px);
+    }
+
+    .footer-heading {
+      font-size: 18px;
+      margin-bottom: 18px;
+    }
+
+    .footer-links {
+      list-style: none;
+      font-size: 14px;
+    }
+
+    .footer-links li {
+      margin-bottom: 10px;
+      color: #b5b5b5;
+    }
+
+    .footer-links a {
+      color: #b5b5b5;
+      text-decoration: none;
+      transition: var(--transition);
+    }
+
+    .footer-links a:hover {
+      color: var(--color-primary);
+    }
+
+    .footer-links i {
+      margin-right: 6px;
+    }
+
+    .footer-bottom {
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      padding-top: 18px;
+      text-align: center;
+      font-size: 13px;
+      color: #a8a8a8;
+    }
+
+    /* ANIMATIONS */
+    .animate-on-scroll {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+
+    .animate-on-scroll.in-view {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @keyframes fade-down {
+      from {
+        opacity: 0;
+        transform: translateY(-18px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 1024px) {
+      .blog-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .footer-container {
+        grid-template-columns: 1.6fr 1fr 1fr;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .hamburger {
+        display: block;
+      }
+
+      .nav-menu {
+        position: fixed;
+        top: 70px;
+        left: -100%;
+        width: 100%;
+        height: calc(100vh - 70px);
+        background-color: var(--color-white);
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+        padding-top: 30px;
+        gap: 24px;
+        transition: var(--transition);
+      }
+
+      .nav-menu.active {
+        left: 0;
+      }
+
+      .page-hero {
+        padding: 135px 0 80px;
+      }
+
+      .page-hero h1 {
+        font-size: 40px;
+      }
+
+      .blog-header-row {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .footer-container {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .page-hero h1 {
+        font-size: 34px;
+      }
+
+      .page-hero p {
+        font-size: 16px;
+      }
+
+      .section {
+        padding: 70px 0;
+      }
+
+      .blog-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .footer-container {
+        grid-template-columns: 1fr;
+        gap: 28px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Header -->
+  <header>
+    <div class="container header-container">
+      <a href="index.html" class="logo">Aurelia<span>.</span></a>
+
+      <div class="hamburger">
+        <i class="fas fa-bars"></i>
+      </div>
+
+      <nav class="nav-menu">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="shop.html" class="nav-link">Shop</a>
+        <a href="collections.html" class="nav-link">Collections</a>
+        <a href="about.html" class="nav-link">About</a>
+        <a href="blog.html" class="nav-link active">Blog</a>
+        <a href="contact.html" class="nav-link">Contact</a>
+      </nav>
+
+      <div class="nav-icons">
+        <a href="#" class="nav-icon"><i class="fas fa-search"></i></a>
+        <a href="#" class="nav-icon"><i class="fas fa-user"></i></a>
+        <a href="#" class="nav-icon"><i class="fas fa-shopping-bag"></i></a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Page Hero -->
+  <section class="page-hero">
+    <div class="container">
+      <h1>Jewelry Journal</h1>
+      <p>Stories, guides, and inspiration from the world of fine jewelry, style, and craftsmanship.</p>
+    </div>
+  </section>
+
+  <!-- Blog List -->
+  <section class="section blog-list-section">
+    <div class="container animate-on-scroll">
+      <div class="blog-header-row">
+        <h2>Latest Articles</h2>
+        <div class="blog-meta-filter">
+          <span class="blog-count">Showing 1–9 of 24 posts</span>
+          <select class="blog-filter-select">
+            <option>Filter: All Topics</option>
+            <option>Jewelry Care</option>
+            <option>Wedding & Bridal</option>
+            <option>Gemstone Guides</option>
+            <option>Behind the Scenes</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="blog-grid">
+        <!-- Card 1 -->
+        <article class="blog-card animate-on-scroll">
+          <div class="blog-image">
+            <img
+              src="https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?auto=format&fit=crop&w=800&q=80"
+              alt="Jewelry Care" />
+          </div>
+          <div class="blog-content">
+            <div class="blog-meta">
+              <span class="blog-category">Jewelry Care</span>
+              <span class="blog-date">June 12, 2023</span>
+            </div>
+            <h3 class="blog-title">How to Properly Care for Your Jewelry</h3>
+            <p class="blog-excerpt">
+              Learn essential tips for maintaining the brilliance of your precious jewelry pieces for years to come.
+            </p>
+            <a href="#" class="btn btn-outline blog-readmore">Read More</a>
+          </div>
+        </article>
+
+        <!-- Card 2 -->
+        <article class="blog-card animate-on-scroll">
+          <div class="blog-image">
+            <img
+              src="https://images.unsplash.com/photo-1517180492447-94d21d4bb5a3?auto=format&fit=crop&w=800&q=80"
+              alt="Diamond Guide" />
+          </div>
+          <div class="blog-content">
+            <div class="blog-meta">
+              <span class="blog-category">Gemstone Guides</span>
+              <span class="blog-date">May 28, 2023</span>
+            </div>
+            <h3 class="blog-title">Understanding Diamond Quality: The 4 C's</h3>
+            <p class="blog-excerpt">
+              A comprehensive guide to carat, cut, color, and clarity when selecting the perfect diamond for any
+              occasion.
+            </p>
+            <a href="#" class="btn btn-outline blog-readmore">Read More</a>
+          </div>
+        </article>
+
+        <!-- Card 3 -->
+        <article class="blog-card animate-on-scroll">
+          <div class="blog-image">
+            <img
+              src="https://images.unsplash.com/photo-1605100804763-247f67b3557e?auto=format&fit=crop&w=800&q=80"
+              alt="Wedding Jewelry" />
+          </div>
+          <div class="blog-content">
+            <div class="blog-meta">
+              <span class="blog-category">Wedding & Bridal</span>
+              <span class="blog-date">April 15, 2023</span>
+            </div>
+            <h3 class="blog-title">Choosing the Perfect Wedding Jewelry</h3>
+            <p class="blog-excerpt">
+              Expert advice on selecting jewelry that complements your wedding dress and reflects your personal style.
+            </p>
+            <a href="#" class="btn btn-outline blog-readmore">Read More</a>
+          </div>
+        </article>
+
+        <!-- Card 4 -->
+        <article class="blog-card animate-on-scroll">
+          <div class="blog-image">
+            <img
+              src="https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?auto=format&fit=crop&w=800&q=80"
+              alt="Layering Jewelry" />
+          </div>
+          <div class="blog-content">
+            <div class="blog-meta">
+              <span class="blog-category">Style Tips</span>
+              <span class="blog-date">March 02, 2023</span>
+            </div>
+            <h3 class="blog-title">The Art of Layering Necklaces</h3>
+            <p class="blog-excerpt">
+              Discover how to mix lengths, textures, and pendants to create a curated layered necklace look.
+            </p>
+            <a href="#" class="btn btn-outline blog-readmore">Read More</a>
+          </div>
+        </article>
+
+        <!-- Card 5 -->
+        <article class="blog-card animate-on-scroll">
+          <div class="blog-image">
+            <img
+              src="https://images.unsplash.com/photo-1602526218387-2f53108f7878?auto=format&fit=crop&w=800&q=80"
+              alt="Behind the scenes Atelier" />
+          </div>
+          <div class="blog-content">
+            <div class="blog-meta">
+              <span class="blog-category">Behind the Scenes</span>
+              <span class="blog-date">February 10, 2023</span>
+            </div>
+            <h3 class="blog-title">Inside the Aurelia Atelier</h3>
+            <p class="blog-excerpt">
+              Take a look behind the scenes at how our master artisans bring each Aurelia design to life.
+            </p>
+            <a href="#" class="btn btn-outline blog-readmore">Read More</a>
+          </div>
+        </article>
+
+        <!-- Card 6 -->
+        <article class="blog-card animate-on-scroll">
+          <div class="blog-image">
+            <img
+              src="https://images.unsplash.com/photo-1522337660859-02fbefca4702?auto=format&fit=crop&w=800&q=80"
+              alt="Birthstone Jewelry" />
+          </div>
+          <div class="blog-content">
+            <div class="blog-meta">
+              <span class="blog-category">Gemstone Guides</span>
+              <span class="blog-date">January 22, 2023</span>
+            </div>
+            <h3 class="blog-title">A Guide to Birthstone Jewelry</h3>
+            <p class="blog-excerpt">
+              Explore the meaning and symbolism behind each month's birthstone and how to style them.
+            </p>
+            <a href="#" class="btn btn-outline blog-readmore">Read More</a>
+          </div>
+        </article>
+
+        <!-- Card 7 -->
+        <article class="blog-card animate-on-scroll">
+          <div class="blog-image">
+            <img
+              src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=800&q=80"
+              alt="Day to Night Jewelry" />
+          </div>
+          <div class="blog-content">
+            <div class="blog-meta">
+              <span class="blog-category">Style Tips</span>
+              <span class="blog-date">December 05, 2022</span>
+            </div>
+            <h3 class="blog-title">Day-to-Night Jewelry Styling</h3>
+            <p class="blog-excerpt">
+              Learn how to transition your jewelry looks seamlessly from the office to evening occasions.
+            </p>
+            <a href="#" class="btn btn-outline blog-readmore">Read More</a>
+          </div>
+        </article>
+
+        <!-- Card 8 -->
+        <article class="blog-card animate-on-scroll">
+          <div class="blog-image">
+            <img
+              src="https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?auto=format&fit=crop&w=800&q=80"
+              alt="Stacking Rings" />
+          </div>
+          <div class="blog-content">
+            <div class="blog-meta">
+              <span class="blog-category">Style Tips</span>
+              <span class="blog-date">November 18, 2022</span>
+            </div>
+            <h3 class="blog-title">How to Stack Rings Like a Stylist</h3>
+            <p class="blog-excerpt">
+              Tips for mixing metals, stones, and textures to create a personalized ring stack.
+            </p>
+            <a href="#" class="btn btn-outline blog-readmore">Read More</a>
+          </div>
+        </article>
+
+        <!-- Card 9 -->
+        <article class="blog-card animate-on-scroll">
+          <div class="blog-image">
+            <img
+              src="https://images.unsplash.com/photo-1514986888952-8cd320577b68?auto=format&fit=crop&w=800&q=80"
+              alt="Ethical Sourcing" />
+          </div>
+          <div class="blog-content">
+            <div class="blog-meta">
+              <span class="blog-category">Sustainability</span>
+              <span class="blog-date">October 02, 2022</span>
+            </div>
+            <h3 class="blog-title">Our Commitment to Ethical Sourcing</h3>
+            <p class="blog-excerpt">
+              Discover how Aurelia partners with responsible suppliers and prioritizes sustainability in every piece.
+            </p>
+            <a href="#" class="btn btn-outline blog-readmore">Read More</a>
+          </div>
+        </article>
+      </div>
+
+      <!-- Pagination -->
+      <div class="pagination">
+        <a href="#" class="page-link"><i class="fas fa-chevron-left"></i></a>
+        <a href="#" class="page-link active">1</a>
+        <a href="#" class="page-link">2</a>
+        <a href="#" class="page-link">3</a>
+        <a href="#" class="page-link">4</a>
+        <a href="#" class="page-link"><i class="fas fa-chevron-right"></i></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="footer-container">
+        <div class="footer-about">
+          <div class="footer-logo">Aurelia<span>.</span></div>
+          <p>
+            Luxury minimalist jewelry crafted with precision and passion. Each piece
+            tells a story of elegance and timeless beauty.
+          </p>
+          <div class="social-icons">
+            <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+            <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" class="social-icon"><i class="fab fa-pinterest"></i></a>
+            <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+          </div>
+        </div>
+        <div>
+          <h3 class="footer-heading">Quick Links</h3>
+          <ul class="footer-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="shop.html">Shop</a></li>
+            <li><a href="collections.html">Collections</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="blog.html">Blog</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="footer-heading">Help</h3>
+          <ul class="footer-links">
+            <li><a href="faq.html">FAQ</a></li>
+            <li><a href="#">Shipping &amp; Returns</a></li>
+            <li><a href="#">Size Guide</a></li>
+            <li><a href="#">Privacy Policy</a></li>
+            <li><a href="#">Terms of Service</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="footer-heading">Store Info</h3>
+          <ul class="footer-links">
+            <li><i class="fas fa-map-marker-alt"></i> 123 Luxury Avenue, New York, NY</li>
+            <li><i class="fas fa-phone"></i> +1 (555) 123-4567</li>
+            <li><i class="fas fa-envelope"></i> info@aurelia.com</li>
+            <li><i class="fas fa-clock"></i> Mon-Fri: 10am-7pm</li>
+            <li><i class="fas fa-clock"></i> Sat-Sun: 11am-5pm</li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2023 Aurelia Jewelry. All rights reserved. | Luxury Jewelry Boutique</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Mobile Navigation Toggle
+    const hamburger = document.querySelector(".hamburger");
+    const navMenu = document.querySelector(".nav-menu");
+
+    hamburger.addEventListener("click", () => {
+      navMenu.classList.toggle("active");
+      hamburger.querySelector("i").classList.toggle("fa-bars");
+      hamburger.querySelector("i").classList.toggle("fa-times");
+    });
+
+    // Close mobile menu when clicking on a link
+    document.querySelectorAll(".nav-link").forEach((link) => {
+      link.addEventListener("click", () => {
+        navMenu.classList.remove("active");
+        hamburger.querySelector("i").classList.add("fa-bars");
+        hamburger.querySelector("i").classList.remove("fa-times");
+      });
+    });
+
+    // Scroll animations
+    const animatedElements = document.querySelectorAll(".animate-on-scroll");
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("in-view");
+          }
+        });
+      },
+      {
+        threshold: 0.15,
+      }
+    );
+
+    animatedElements.forEach((el) => observer.observe(el));
+  </script>
+</body>
+
+</html>

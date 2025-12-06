@@ -1,0 +1,969 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact Us | Aurelia Jewelry</title>
+
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@300;400;500&display=swap"
+    rel="stylesheet" />
+
+  <style>
+    :root {
+      --color-primary: #d4af37;
+      --color-primary-light: #e8d9a7;
+      --color-secondary: #a89f91;
+      --color-dark: #1a1a1a;
+      --color-light: #f8f7f4;
+      --color-white: #ffffff;
+      --font-heading: "Cormorant Garamond", serif;
+      --font-body: "Inter", sans-serif;
+      --shadow-light: 0 4px 20px rgba(0, 0, 0, 0.05);
+      --shadow-medium: 0 8px 30px rgba(0, 0, 0, 0.12);
+      --border-radius: 12px;
+      --transition: all 0.3s ease;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: var(--font-body);
+      color: var(--color-dark);
+      background-color: var(--color-white);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+      font-family: var(--font-heading);
+      font-weight: 600;
+      line-height: 1.2;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    .section {
+      padding: 90px 0;
+    }
+
+    .section-header {
+      text-align: center;
+      margin-bottom: 50px;
+    }
+
+    .section-header h2 {
+      font-size: 36px;
+      margin-bottom: 10px;
+    }
+
+    .section-header p {
+      max-width: 580px;
+      margin: 0 auto;
+      color: var(--color-secondary);
+    }
+
+    /* HEADER */
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background-color: var(--color-white);
+      box-shadow: var(--shadow-light);
+      z-index: 1000;
+      padding: 14px 0;
+    }
+
+    .header-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-family: var(--font-heading);
+      font-size: 28px;
+      font-weight: 700;
+      color: var(--color-dark);
+      text-decoration: none;
+      letter-spacing: 1px;
+    }
+
+    .logo span {
+      color: var(--color-primary);
+    }
+
+    .nav-menu {
+      display: flex;
+      gap: 32px;
+      align-items: center;
+    }
+
+    .nav-link {
+      position: relative;
+      font-size: 15px;
+      text-decoration: none;
+      color: var(--color-dark);
+      font-weight: 500;
+      transition: var(--transition);
+    }
+
+    .nav-link::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -4px;
+      width: 0;
+      height: 1px;
+      background-color: var(--color-primary);
+      transition: var(--transition);
+    }
+
+    .nav-link:hover {
+      color: var(--color-primary);
+    }
+
+    .nav-link:hover::after,
+    .nav-link.active::after {
+      width: 100%;
+    }
+
+    .nav-link.active {
+      color: var(--color-primary);
+    }
+
+    .nav-icons {
+      display: flex;
+      gap: 16px;
+      align-items: center;
+    }
+
+    .nav-icon {
+      color: var(--color-dark);
+      font-size: 17px;
+      transition: var(--transition);
+    }
+
+    .nav-icon:hover {
+      color: var(--color-primary);
+      transform: translateY(-1px);
+    }
+
+    .hamburger {
+      display: none;
+      cursor: pointer;
+      font-size: 22px;
+    }
+
+    /* Contact.Hero */
+    .page-hero {
+      padding: 160px 0 110px;
+      background:
+        linear-gradient(135deg,
+          rgba(248, 247, 244, 0.96) 0%,
+          rgba(248, 247, 244, 0.9) 40%,
+          rgba(255, 255, 255, 1) 100%);
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .page-hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at top left,
+          rgba(212, 175, 55, 0.25),
+          transparent 60%);
+      pointer-events: none;
+    }
+
+    .page-hero .container {
+      position: relative;
+      z-index: 1;
+      animation: fade-down 0.8s ease-out both;
+    }
+
+    .page-hero h1 {
+      font-size: 52px;
+      margin-bottom: 16px;
+      color: var(--color-dark);
+      letter-spacing: 0.04em;
+      text-transform: capitalize;
+    }
+
+    .page-hero p {
+      font-size: 18px;
+      color: var(--color-secondary);
+      max-width: 650px;
+      margin: 0 auto;
+    }
+
+    /* Buttons */
+    .btn {
+      display: inline-block;
+      padding: 12px 28px;
+      border-radius: 999px;
+      border: none;
+      cursor: pointer;
+      font-family: var(--font-body);
+      font-size: 14px;
+      font-weight: 500;
+      letter-spacing: 0.03em;
+      text-transform: uppercase;
+      text-decoration: none;
+      transition: var(--transition);
+    }
+
+    .btn-outline {
+      background-color: transparent;
+      color: var(--color-dark);
+      border: 1px solid var(--color-dark);
+    }
+
+    .btn-outline:hover {
+      background-color: var(--color-dark);
+      color: var(--color-white);
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-medium);
+    }
+
+    .btn-primary {
+      background-color: var(--color-primary);
+      color: var(--color-white);
+      box-shadow: var(--shadow-light);
+    }
+
+    .btn-primary:hover {
+      background-color: #c19b2c;
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-medium);
+    }
+
+    /* Contact.InfoGrid */
+    .contact-info-section {
+      background-color: var(--color-light);
+      padding: 80px 0 70px;
+    }
+
+    .contact-info-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 24px;
+    }
+
+    .contact-info-card {
+      background-color: var(--color-white);
+      border-radius: 16px;
+      padding: 26px 22px;
+      box-shadow: var(--shadow-light);
+      text-align: left;
+      transition: var(--transition);
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .contact-info-card:hover {
+      transform: translateY(-8px);
+      box-shadow: var(--shadow-medium);
+    }
+
+    .contact-info-icon {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background-color: rgba(212, 175, 55, 0.09);
+      color: var(--color-primary);
+      font-size: 18px;
+      margin-bottom: 6px;
+    }
+
+    .contact-info-heading {
+      font-size: 18px;
+      margin-bottom: 2px;
+    }
+
+    .contact-info-text {
+      font-size: 14px;
+      color: var(--color-secondary);
+    }
+
+    .contact-info-highlight {
+      font-weight: 500;
+      color: var(--color-dark);
+    }
+
+    /* Contact.ChatCTA */
+    .chat-cta-section {
+      padding: 40px 0 0;
+    }
+
+    .chat-cta-card {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      padding: 24px 26px;
+      border-radius: 18px;
+      background: linear-gradient(135deg,
+          #1a1a1a 0%,
+          #2a2620 45%,
+          #3b3120 100%);
+      color: #fff;
+      box-shadow: var(--shadow-medium);
+    }
+
+    .chat-cta-content h3 {
+      font-size: 24px;
+      margin-bottom: 6px;
+    }
+
+    .chat-cta-content p {
+      font-size: 14px;
+      color: rgba(255, 255, 255, 0.8);
+      max-width: 480px;
+    }
+
+    .chat-cta-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 6px;
+      opacity: 0.9;
+    }
+
+    .chat-cta-badge i {
+      font-size: 9px;
+    }
+
+    .chat-cta-actions .btn-primary {
+      background-color: var(--color-primary);
+      color: var(--color-dark);
+      border: 1px solid transparent;
+    }
+
+    .chat-cta-actions .btn-primary:hover {
+      background-color: #f0d061;
+      transform: translateY(-1px);
+    }
+
+    /* Contact.FormSection */
+    .contact-form-section {
+      padding: 90px 0;
+    }
+
+    .contact-form-wrapper {
+      display: grid;
+      grid-template-columns: 1.1fr 1.2fr;
+      gap: 60px;
+      align-items: flex-start;
+    }
+
+    .contact-form-intro h2 {
+      font-size: 36px;
+      margin-bottom: 12px;
+    }
+
+    .contact-form-intro p {
+      color: var(--color-secondary);
+      margin-bottom: 18px;
+    }
+
+    .contact-form-highlights {
+      margin-top: 18px;
+      display: grid;
+      gap: 10px;
+    }
+
+    .contact-form-highlights-item {
+      display: flex;
+      gap: 10px;
+      font-size: 14px;
+      color: var(--color-secondary);
+    }
+
+    .contact-form-highlights-item i {
+      margin-top: 3px;
+      color: var(--color-primary);
+    }
+
+    .contact-form-card {
+      background-color: var(--color-light);
+      border-radius: 18px;
+      padding: 26px 24px;
+      box-shadow: var(--shadow-light);
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .form-group {
+      margin-bottom: 14px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .form-group label {
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--color-dark);
+    }
+
+    .form-control {
+      border-radius: 999px;
+      border: 1px solid #d5d0c8;
+      padding: 10px 14px;
+      font-family: var(--font-body);
+      font-size: 14px;
+      outline: none;
+      background-color: var(--color-white);
+      transition: var(--transition);
+    }
+
+    .form-control:focus {
+      border-color: var(--color-primary);
+      box-shadow: 0 0 0 2px rgba(212, 175, 55, 0.18);
+    }
+
+    textarea.form-control {
+      border-radius: 16px;
+      resize: vertical;
+      min-height: 120px;
+    }
+
+    .form-note {
+      font-size: 12px;
+      color: var(--color-secondary);
+      margin-top: 4px;
+    }
+
+    .form-submit-row {
+      margin-top: 10px;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
+    .form-submit-row .btn-primary {
+      padding-inline: 32px;
+    }
+
+    /* FOOTER */
+    footer {
+      background-color: var(--color-dark);
+      color: var(--color-white);
+      padding: 70px 0 40px;
+      margin-top: 20px;
+    }
+
+    .footer-container {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 40px;
+      margin-bottom: 40px;
+    }
+
+    .footer-logo {
+      font-family: var(--font-heading);
+      font-size: 26px;
+      font-weight: 700;
+      margin-bottom: 16px;
+    }
+
+    .footer-logo span {
+      color: var(--color-primary);
+    }
+
+    .footer-about p {
+      color: #b5b5b5;
+      font-size: 14px;
+      margin-bottom: 18px;
+    }
+
+    .social-icons {
+      display: flex;
+      gap: 14px;
+    }
+
+    .social-icon {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      color: var(--color-white);
+      background-color: rgba(255, 255, 255, 0.06);
+      transition: var(--transition);
+      font-size: 14px;
+    }
+
+    .social-icon:hover {
+      background-color: var(--color-primary);
+      transform: translateY(-2px);
+    }
+
+    .footer-heading {
+      font-size: 18px;
+      margin-bottom: 18px;
+    }
+
+    .footer-links {
+      list-style: none;
+      font-size: 14px;
+    }
+
+    .footer-links li {
+      margin-bottom: 10px;
+      color: #b5b5b5;
+    }
+
+    .footer-links a {
+      color: #b5b5b5;
+      text-decoration: none;
+      transition: var(--transition);
+    }
+
+    .footer-links a:hover {
+      color: var(--color-primary);
+    }
+
+    .footer-links i {
+      margin-right: 6px;
+    }
+
+    .footer-bottom {
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      padding-top: 18px;
+      text-align: center;
+      font-size: 13px;
+      color: #a8a8a8;
+    }
+
+    /* ANIMATIONS */
+    .animate-on-scroll {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+
+    .animate-on-scroll.in-view {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @keyframes fade-down {
+      from {
+        opacity: 0;
+        transform: translateY(-18px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 1024px) {
+      .contact-info-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .contact-form-wrapper {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+
+      .footer-container {
+        grid-template-columns: 1.6fr 1fr 1fr;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .hamburger {
+        display: block;
+      }
+
+      .nav-menu {
+        position: fixed;
+        top: 70px;
+        left: -100%;
+        width: 100%;
+        height: calc(100vh - 70px);
+        background-color: var(--color-white);
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+        padding-top: 30px;
+        gap: 24px;
+        transition: var(--transition);
+      }
+
+      .nav-menu.active {
+        left: 0;
+      }
+
+      .page-hero {
+        padding: 135px 0 80px;
+      }
+
+      .page-hero h1 {
+        font-size: 40px;
+      }
+
+      .chat-cta-card {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .footer-container {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .page-hero h1 {
+        font-size: 34px;
+      }
+
+      .page-hero p {
+        font-size: 16px;
+      }
+
+      .section {
+        padding: 70px 0;
+      }
+
+      .contact-info-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .form-row {
+        grid-template-columns: 1fr;
+      }
+
+      .footer-container {
+        grid-template-columns: 1fr;
+        gap: 28px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Header -->
+  <header>
+    <div class="container header-container">
+      <a href="index.html" class="logo">Aurelia<span>.</span></a>
+
+      <div class="hamburger">
+        <i class="fas fa-bars"></i>
+      </div>
+
+      <nav class="nav-menu">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="shop.html" class="nav-link">Shop</a>
+        <a href="collections.html" class="nav-link">Collections</a>
+        <a href="about.html" class="nav-link">About</a>
+        <a href="blog.html" class="nav-link">Blog</a>
+        <a href="contact.html" class="nav-link active">Contact</a>
+      </nav>
+
+      <div class="nav-icons">
+        <a href="#" class="nav-icon"><i class="fas fa-search"></i></a>
+        <a href="#" class="nav-icon"><i class="fas fa-user"></i></a>
+        <a href="#" class="nav-icon"><i class="fas fa-shopping-bag"></i></a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Contact.Hero -->
+  <section class="page-hero">
+    <div class="container">
+      <h1>Contact Us</h1>
+      <p>
+        We’re here to help with sizing, styling, custom designs, or any questions
+        about your Aurelia jewelry. Reach out and our team will respond shortly.
+      </p>
+    </div>
+  </section>
+
+  <!-- Contact.InfoGrid -->
+  <section class="contact-info-section">
+    <div class="container animate-on-scroll">
+      <div class="contact-info-grid">
+        <!-- Phone -->
+        <div class="contact-info-card">
+          <div class="contact-info-icon">
+            <i class="fas fa-phone-alt"></i>
+          </div>
+          <h3 class="contact-info-heading">Phone Number</h3>
+          <p class="contact-info-text">
+            <span class="contact-info-highlight">+1 (555) 123-4567</span><br />
+            Mon–Fri, 10:00 AM – 7:00 PM (EST)
+          </p>
+        </div>
+        <!-- Email -->
+        <div class="contact-info-card">
+          <div class="contact-info-icon">
+            <i class="fas fa-envelope"></i>
+          </div>
+          <h3 class="contact-info-heading">Email Address</h3>
+          <p class="contact-info-text">
+            <span class="contact-info-highlight">support@aurelia.com</span><br />
+            We aim to reply within 24 hours.
+          </p>
+        </div>
+        <!-- Location -->
+        <div class="contact-info-card">
+          <div class="contact-info-icon">
+            <i class="fas fa-map-marker-alt"></i>
+          </div>
+          <h3 class="contact-info-heading">Boutique Location</h3>
+          <p class="contact-info-text">
+            <span class="contact-info-highlight">123 Luxury Avenue</span><br />
+            New York, NY 10001, United States
+          </p>
+        </div>
+        <!-- Work Hours -->
+        <div class="contact-info-card">
+          <div class="contact-info-icon">
+            <i class="fas fa-business-time"></i>
+          </div>
+          <h3 class="contact-info-heading">Work Hours</h3>
+          <p class="contact-info-text">
+            <span class="contact-info-highlight">Mon–Fri: 10 AM – 7 PM</span><br />
+            Sat–Sun: 11 AM – 5 PM
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact.ChatCTA -->
+  <section class="chat-cta-section">
+    <div class="container animate-on-scroll">
+      <div class="chat-cta-card">
+        <div class="chat-cta-content">
+          <div class="chat-cta-badge">
+            <i class="fas fa-circle"></i>
+            <span>Chat Now</span>
+          </div>
+          <h3>Need Quick Help? Start a Chat with Our Team</h3>
+          <p>
+            Have a question about an order, gift recommendation, or custom design? Our jewelry specialists are
+            available to assist you in real-time during business hours.
+          </p>
+        </div>
+        <div class="chat-cta-actions">
+          <button class="btn btn-primary">
+            Start To Chat
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact.FormSection -->
+  <section class="contact-form-section">
+    <div class="container contact-form-wrapper animate-on-scroll">
+      <!-- Left Intro -->
+      <div class="contact-form-intro">
+        <h2>Send Us a Message</h2>
+        <p>
+          Share your questions, ideas, or requests and we’ll get back to you with a
+          thoughtful response. Whether it’s a custom engagement ring or help with
+          a recent order, we’re here for you.
+        </p>
+        <div class="contact-form-highlights">
+          <div class="contact-form-highlights-item">
+            <i class="fas fa-check"></i>
+            <span>Bespoke and custom jewelry consultation requests are welcome.</span>
+          </div>
+          <div class="contact-form-highlights-item">
+            <i class="fas fa-check"></i>
+            <span>Attach order numbers or product names in your message for faster support.</span>
+          </div>
+          <div class="contact-form-highlights-item">
+            <i class="fas fa-check"></i>
+            <span>We never share your personal information with third parties.</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right Form -->
+      <div class="contact-form-card">
+        <!-- You can connect this form to your backend / PHP / API later -->
+        <form action="#" method="post">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="name">Full Name</label>
+              <input type="text" id="name" name="name" class="form-control" placeholder="Enter your full name"
+                     required />
+            </div>
+            <div class="form-group">
+              <label for="email">Email Address</label>
+              <input type="email" id="email" name="email" class="form-control" placeholder="Enter your email"
+                     required />
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="subject">Subject</label>
+            <input type="text" id="subject" name="subject" class="form-control"
+                   placeholder="How can we help you?" required />
+          </div>
+
+          <div class="form-group">
+            <label for="message">Message</label>
+            <textarea id="message" name="message" class="form-control"
+                      placeholder="Write your message here..." required></textarea>
+            <p class="form-note">
+              Please include any relevant details such as product names, order numbers, or preferred appointment times.
+            </p>
+          </div>
+
+          <div class="form-submit-row">
+            <button type="submit" class="btn btn-primary">
+              Send Message
+            </button>
+            <span class="form-note">We’ll respond to your message as soon as possible.</span>
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="footer-container">
+        <div class="footer-about">
+          <div class="footer-logo">Aurelia<span>.</span></div>
+          <p>
+            Luxury minimalist jewelry crafted with precision and passion. Each piece
+            tells a story of elegance and timeless beauty.
+          </p>
+          <div class="social-icons">
+            <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+            <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" class="social-icon"><i class="fab fa-pinterest"></i></a>
+            <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+          </div>
+        </div>
+        <div>
+          <h3 class="footer-heading">Quick Links</h3>
+          <ul class="footer-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="shop.html">Shop</a></li>
+            <li><a href="collections.html">Collections</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="blog.html">Blog</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="footer-heading">Help</h3>
+          <ul class="footer-links">
+            <li><a href="faq.html">FAQ</a></li>
+            <li><a href="#">Shipping &amp; Returns</a></li>
+            <li><a href="#">Size Guide</a></li>
+            <li><a href="#">Privacy Policy</a></li>
+            <li><a href="#">Terms of Service</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="footer-heading">Store Info</h3>
+          <ul class="footer-links">
+            <li><i class="fas fa-map-marker-alt"></i> 123 Luxury Avenue, New York, NY</li>
+            <li><i class="fas fa-phone"></i> +1 (555) 123-4567</li>
+            <li><i class="fas fa-envelope"></i> info@aurelia.com</li>
+            <li><i class="fas fa-clock"></i> Mon-Fri: 10am-7pm</li>
+            <li><i class="fas fa-clock"></i> Sat-Sun: 11am-5pm</li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2023 Aurelia Jewelry. All rights reserved. | Luxury Jewelry Boutique</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Mobile Navigation Toggle
+    const hamburger = document.querySelector(".hamburger");
+    const navMenu = document.querySelector(".nav-menu");
+
+    hamburger.addEventListener("click", () => {
+      navMenu.classList.toggle("active");
+      hamburger.querySelector("i").classList.toggle("fa-bars");
+      hamburger.querySelector("i").classList.toggle("fa-times");
+    });
+
+    // Close mobile menu when clicking on a link
+    document.querySelectorAll(".nav-link").forEach((link) => {
+      link.addEventListener("click", () => {
+        navMenu.classList.remove("active");
+        hamburger.querySelector("i").classList.add("fa-bars");
+        hamburger.querySelector("i").classList.remove("fa-times");
+      });
+    });
+
+    // Scroll animations
+    const animatedElements = document.querySelectorAll(".animate-on-scroll");
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("in-view");
+          }
+        });
+      },
+      {
+        threshold: 0.15,
+      }
+    );
+
+    animatedElements.forEach((el) => observer.observe(el));
+  </script>
+</body>
+
+</html>

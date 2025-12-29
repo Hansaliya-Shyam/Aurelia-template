@@ -1,38 +1,30 @@
-
----
-
-# 📁 README for **Aurelia-template**  
-🔗 https://github.com/Hansaliya-Shyam/Aurelia-template
-
-```md
 # 💎 Aurelia – Jewelry Website Template
 
-Aurelia is a **modern, elegant, and responsive jewelry website template** designed for luxury brands.  
-Built with clean **HTML, CSS, and JavaScript**, it focuses on premium UI, animations, and performance.
+Aurelia is a modern, elegant, and responsive **jewelry website template** designed for luxury brands and premium online stores.  
+Built with clean **HTML, CSS, and JavaScript**, it focuses on high-quality UI, smooth animations, and performance.
 
 ---
 
 ## ✨ Features
-- Luxury Jewelry UI Design
-- Fully Responsive Layout
-- Modern Animations
-- Clean & Reusable Components
-- SEO-Friendly Structure
-- Easy Customization
+- Luxury jewelry-focused UI design  
+- Fully responsive layout for all devices  
+- Smooth animations and transitions  
+- Clean & reusable components  
+- SEO-friendly HTML structure  
+- Easy to customize and extend  
 
 ---
 
 ## 🛠️ Tech Stack
-- **HTML5**
-- **CSS3**
-- **JavaScript**
-- **Google Fonts**
-- **Font Awesome Icons**
+- **Frontend:** HTML5, CSS3, JavaScript  
+- **Typography:** Google Fonts  
+- **Icons:** Font Awesome (or similar icon library)  
+- **Deployment:** Any static hosting (GitHub Pages, Netlify, Vercel, etc.)  
 
 ---
 
 ## 🗂️ Project Structure
-```text
+
 Aurelia-template/
 ├── assets/
 │   ├── css/
@@ -43,3 +35,28 @@ Aurelia-template/
 ├── header.html
 ├── footer.html
 └── README.md
+
+---
+
+## ▶️ How to Use
+
+1. Clone the repository:
+2. Open the project folder:
+3. Open `index.html` in your browser (or use a live server extension in VS Code).  
+
+---
+
+## 📌 Customization Tips
+- Update colors, fonts, and spacing in the main CSS file inside `assets/css/`.  
+- Replace demo images with your brand images in `assets/images/`.  
+- Edit `index.html`, `product.html`, `header.html`, and `footer.html` to match your brand content.  
+
+---
+
+## 👨‍💻 Author
+**Hansaliya Shyam**
+
+---
+
+## ⭐ Support
+If you like this template, please ⭐ the repository and share it with others!

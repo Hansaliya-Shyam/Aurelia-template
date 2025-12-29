@@ -1,98 +1,45 @@
 
 ---
 
-## 📘 README.md for **Aurelia-template**
+# 📁 README for **Aurelia-template**  
+🔗 https://github.com/Hansaliya-Shyam/Aurelia-template
 
 ```md
 # 💎 Aurelia – Jewelry Website Template
 
-Aurelia is a **luxury jewelry website template** built using **HTML, CSS, and JavaScript**.  
-It focuses on modern design, smooth animations, and responsive layouts.
+Aurelia is a **modern, elegant, and responsive jewelry website template** designed for luxury brands.  
+Built with clean **HTML, CSS, and JavaScript**, it focuses on premium UI, animations, and performance.
 
 ---
 
 ## ✨ Features
-- Elegant & Luxury UI
-- Responsive Design
-- Smooth Animations
-- Clean Code Structure
+- Luxury Jewelry UI Design
+- Fully Responsive Layout
+- Modern Animations
+- Clean & Reusable Components
+- SEO-Friendly Structure
 - Easy Customization
 
 ---
 
 ## 🛠️ Tech Stack
-- HTML5
-- CSS3
-- JavaScript
-- Google Fonts
-- Font Awesome
+- **HTML5**
+- **CSS3**
+- **JavaScript**
+- **Google Fonts**
+- **Font Awesome Icons**
 
 ---
 
-## 📂 Project Structure
-
+## 🗂️ Project Structure
+```text
 Aurelia-template/
 ├── assets/
-│ ├── css/
-│ ├── js/
-│ └── images/
+│   ├── css/
+│   ├── js/
+│   └── images/
 ├── index.html
 ├── product.html
-├── header.php
-├── footer.php
+├── header.html
+├── footer.html
 └── README.md
-
-
----
-
-## 🎨 Design Highlights
-- Premium color palette
-- Elegant typography
-- Product-focused layout
-- Modern hover effects
-
----
-
-## ▶️ How to Use
-1. Clone the repository:
-git clone https://github.com/Hansaliya-Shyam/Aurelia-template.git
-2. Open `index.html` in a browser
-3. Customize as required
-
----
-
-## 🔮 Future Enhancements
-- Shopping Cart
-- Backend Integration
-- Product Filtering
-- Payment System
-
----
-
-## 👤 Author
-**Hansaliya Shyam**
-
----
-
-## ⭐ Support
-If you find this template useful, please ⭐ the repository.
-2. Open `index.html` in a browser
-3. Customize as required
-
----
-
-## 🔮 Future Enhancements
-- Shopping Cart
-- Backend Integration
-- Product Filtering
-- Payment System
-
----
-
-## 👤 Author
-**Hansaliya Shyam**
-
----
-
-## ⭐ Support
-If you find this template useful, please ⭐ the repository.

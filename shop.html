@@ -61,19 +61,19 @@
                     <h4>Category</h4>
                     <div class="filter-options">
                         <div class="filter-option">
-                            <div class="filter-checkbox" data-filter="rings"></div>
+                            <div class="filter-checkbox" data-filter="rings" data-group="category"></div>
                             <span>Rings</span>
                         </div>
                         <div class="filter-option">
-                            <div class="filter-checkbox" data-filter="necklaces"></div>
+                            <div class="filter-checkbox" data-filter="necklaces" data-group="category"></div>
                             <span>Necklaces</span>
                         </div>
                         <div class="filter-option">
-                            <div class="filter-checkbox" data-filter="bracelets"></div>
+                            <div class="filter-checkbox" data-filter="bracelets" data-group="category"></div>
                             <span>Bracelets</span>
                         </div>
                         <div class="filter-option">
-                            <div class="filter-checkbox" data-filter="earrings"></div>
+                            <div class="filter-checkbox" data-filter="earrings" data-group="category"></div>
                             <span>Earrings</span>
                         </div>
                     </div>
@@ -83,19 +83,19 @@
                     <h4>Material</h4>
                     <div class="filter-options">
                         <div class="filter-option">
-                            <div class="filter-checkbox" data-filter="gold"></div>
+                            <div class="filter-checkbox" data-filter="gold" data-group="material"></div>
                             <span>Gold</span>
                         </div>
                         <div class="filter-option">
-                            <div class="filter-checkbox" data-filter="silver"></div>
+                            <div class="filter-checkbox" data-filter="silver" data-group="material"></div>
                             <span>Silver</span>
                         </div>
                         <div class="filter-option">
-                            <div class="filter-checkbox" data-filter="platinum"></div>
+                            <div class="filter-checkbox" data-filter="platinum" data-group="material"></div>
                             <span>Platinum</span>
                         </div>
                         <div class="filter-option">
-                            <div class="filter-checkbox" data-filter="rose-gold"></div>
+                            <div class="filter-checkbox" data-filter="rose-gold" data-group="material"></div>
                             <span>Rose Gold</span>
                         </div>
                     </div>
@@ -114,23 +114,23 @@
                     <h4>Gemstone</h4>
                     <div class="filter-options">
                         <div class="filter-option">
-                            <div class="filter-checkbox" data-filter="diamond"></div>
+                            <div class="filter-checkbox" data-filter="diamond" data-group="gemstone"></div>
                             <span>Diamond</span>
                         </div>
                         <div class="filter-option">
-                            <div class="filter-checkbox" data-filter="emerald"></div>
+                            <div class="filter-checkbox" data-filter="emerald" data-group="gemstone"></div>
                             <span>Emerald</span>
                         </div>
                         <div class="filter-option">
-                            <div class="filter-checkbox" data-filter="sapphire"></div>
+                            <div class="filter-checkbox" data-filter="sapphire" data-group="gemstone"></div>
                             <span>Sapphire</span>
                         </div>
                         <div class="filter-option">
-                            <div class="filter-checkbox" data-filter="ruby"></div>
+                            <div class="filter-checkbox" data-filter="ruby" data-group="gemstone"></div>
                             <span>Ruby</span>
                         </div>
                         <div class="filter-option">
-                            <div class="filter-checkbox" data-filter="pearl"></div>
+                            <div class="filter-checkbox" data-filter="pearl" data-group="gemstone"></div>
                             <span>Pearl</span>
                         </div>
                     </div>
@@ -147,7 +147,7 @@
             <!-- Product Grid -->
             <div class="shop-content animate-on-scroll">
                 <div class="product-grid-header">
-                    <h2>All Products <span id="productCount">(24 items)</span></h2>
+                    <h2>All Products <span id="productCount">(12 items)</span></h2>
                     <div>
                         <select class="sort-select">
                             <option>Sort by: Featured</option>
@@ -278,6 +278,126 @@
                             <a href="#" class="btn btn-outline">Add to Cart</a>
                         </div>
                     </div>
+
+                    <div class="product-card animate-on-scroll" data-category="rings" data-material="rose-gold"
+                        data-gemstone="ruby" data-price="1650">
+                        <div class="product-image">
+                            <img src="images/Ring2.jpg" alt="Rose Gold Twist Ring" />
+                        </div>
+                        <div class="product-info">
+                            <h3 class="product-title">Rose Gold Twist Ring</h3>
+                            <div class="rating">
+                                <span class="star filled"><i class="fas fa-star"></i></span>
+                                <span class="star filled"><i class="fas fa-star"></i></span>
+                                <span class="star filled"><i class="fas fa-star"></i></span>
+                                <span class="star filled"><i class="fas fa-star"></i></span>
+                                <span class="star"><i class="fas fa-star"></i></span>
+                                <span class="rating-count">(31)</span>
+                            </div>
+                            <p class="product-price">$1,650</p>
+                            <a href="#" class="btn btn-outline">Add to Cart</a>
+                        </div>
+                    </div>
+
+                    <div class="product-card animate-on-scroll" data-category="rings" data-material="gold"
+                        data-gemstone="emerald" data-price="2750">
+                        <div class="product-image">
+                            <img src="images/Ring3.jpg" alt="Emerald Halo Ring" />
+                        </div>
+                        <div class="product-info">
+                            <h3 class="product-title">Emerald Halo Ring</h3>
+                            <div class="rating">
+                                <span class="star filled"><i class="fas fa-star"></i></span>
+                                <span class="star filled"><i class="fas fa-star"></i></span>
+                                <span class="star filled"><i class="fas fa-star"></i></span>
+                                <span class="star"><i class="fas fa-star"></i></span>
+                                <span class="star"><i class="fas fa-star"></i></span>
+                                <span class="rating-count">(18)</span>
+                            </div>
+                            <p class="product-price">$2,750</p>
+                            <a href="#" class="btn btn-outline">Add to Cart</a>
+                        </div>
+                    </div>
+
+                    <div class="product-card animate-on-scroll" data-category="earrings" data-material="gold"
+                        data-gemstone="pearl" data-price="980">
+                        <div class="product-image">
+                            <img src="images/ERing1.webp" alt="Pearl Drop Earrings" />
+                        </div>
+                        <div class="product-info">
+                            <h3 class="product-title">Pearl Drop Earrings</h3>
+                            <div class="rating">
+                                <span class="star filled"><i class="fas fa-star"></i></span>
+                                <span class="star filled"><i class="fas fa-star"></i></span>
+                                <span class="star filled"><i class="fas fa-star"></i></span>
+                                <span class="star filled"><i class="fas fa-star"></i></span>
+                                <span class="star"><i class="fas fa-star"></i></span>
+                                <span class="rating-count">(24)</span>
+                            </div>
+                            <p class="product-price">$980</p>
+                            <a href="#" class="btn btn-outline">Add to Cart</a>
+                        </div>
+                    </div>
+
+                    <div class="product-card animate-on-scroll" data-category="earrings" data-material="silver"
+                        data-gemstone="" data-price="650">
+                        <div class="product-image">
+                            <img src="images/ERing2.webp" alt="Modern Hoop Earrings" />
+                        </div>
+                        <div class="product-info">
+                            <h3 class="product-title">Modern Hoop Earrings</h3>
+                            <div class="rating">
+                                <span class="star filled"><i class="fas fa-star"></i></span>
+                                <span class="star filled"><i class="fas fa-star"></i></span>
+                                <span class="star filled"><i class="fas fa-star"></i></span>
+                                <span class="star"><i class="fas fa-star"></i></span>
+                                <span class="star"><i class="fas fa-star"></i></span>
+                                <span class="rating-count">(15)</span>
+                            </div>
+                            <p class="product-price">$650</p>
+                            <a href="#" class="btn btn-outline">Add to Cart</a>
+                        </div>
+                    </div>
+
+                    <div class="product-card animate-on-scroll" data-category="necklaces" data-material="gold"
+                        data-gemstone="pearl" data-price="1200">
+                        <div class="product-image">
+                            <img src="images/product-pearl-necklace.jpg" alt="Classic Pearl Necklace" />
+                        </div>
+                        <div class="product-info">
+                            <h3 class="product-title">Classic Pearl Necklace</h3>
+                            <div class="rating">
+                                <span class="star filled"><i class="fas fa-star"></i></span>
+                                <span class="star filled"><i class="fas fa-star"></i></span>
+                                <span class="star filled"><i class="fas fa-star"></i></span>
+                                <span class="star filled"><i class="fas fa-star"></i></span>
+                                <span class="star"><i class="fas fa-star"></i></span>
+                                <span class="rating-count">(40)</span>
+                            </div>
+                            <p class="product-price">$1,200</p>
+                            <a href="#" class="btn btn-outline">Add to Cart</a>
+                        </div>
+                    </div>
+
+                    <div class="product-card animate-on-scroll" data-category="bracelets" data-material="silver"
+                        data-gemstone="" data-price="720">
+                        <div class="product-image">
+                            <img src="images/Pear2.jpeg" alt="Luxe Chain Bracelet" />
+                        </div>
+                        <div class="product-info">
+                            <h3 class="product-title">Luxe Chain Bracelet</h3>
+                            <div class="rating">
+                                <span class="star filled"><i class="fas fa-star"></i></span>
+                                <span class="star filled"><i class="fas fa-star"></i></span>
+                                <span class="star filled"><i class="fas fa-star"></i></span>
+                                <span class="star"><i class="fas fa-star"></i></span>
+                                <span class="star"><i class="fas fa-star"></i></span>
+                                <span class="rating-count">(19)</span>
+                            </div>
+                            <p class="product-price">$720</p>
+                            <a href="#" class="btn btn-outline">Add to Cart</a>
+                        </div>
+                    </div>
                 </div>
 
 
@@ -374,6 +494,7 @@
             option.addEventListener("click", function () {
                 const checkbox = this.querySelector(".filter-checkbox");
                 checkbox.classList.toggle("checked");
+                applyFilters();
             });
         });
 
@@ -385,25 +506,38 @@
         priceRange.addEventListener("input", function () {
             minPrice.value = 0;
             maxPrice.value = this.value;
+            applyFilters();
         });
 
         minPrice.addEventListener("change", function () {
             if (parseInt(this.value) < 0) this.value = 0;
             if (parseInt(this.value) > parseInt(maxPrice.value)) this.value = maxPrice.value;
             priceRange.value = maxPrice.value;
+            applyFilters();
         });
 
         maxPrice.addEventListener("change", function () {
             if (parseInt(this.value) > 5000) this.value = 5000;
             if (parseInt(this.value) < parseInt(minPrice.value)) this.value = minPrice.value;
             priceRange.value = this.value;
+            applyFilters();
         });
 
-        // Apply filters
-        document.getElementById("applyFilters").addEventListener("click", function () {
-            const checkedFilters = [];
+        const productCount = document.getElementById("productCount");
+
+        function applyFilters() {
+            const selected = {
+                category: [],
+                material: [],
+                gemstone: [],
+            };
+
             document.querySelectorAll(".filter-checkbox.checked").forEach((checkbox) => {
-                checkedFilters.push(checkbox.getAttribute("data-filter"));
+                const group = checkbox.getAttribute("data-group");
+                const value = checkbox.getAttribute("data-filter");
+                if (group && selected[group]) {
+                    selected[group].push(value);
+                }
             });
 
             const minPriceValue = parseInt(minPrice.value);
@@ -418,22 +552,15 @@
                 const productMaterial = product.getAttribute("data-material");
                 const productGemstone = product.getAttribute("data-gemstone");
 
-                let shouldShow = true;
+                const inPriceRange = productPrice >= minPriceValue && productPrice <= maxPriceValue;
+                const categoryMatch =
+                    selected.category.length === 0 || selected.category.includes(productCategory);
+                const materialMatch =
+                    selected.material.length === 0 || selected.material.includes(productMaterial);
+                const gemstoneMatch =
+                    selected.gemstone.length === 0 || selected.gemstone.includes(productGemstone);
 
-                if (productPrice < minPriceValue || productPrice > maxPriceValue) {
-                    shouldShow = false;
-                }
-
-                if (checkedFilters.length > 0) {
-                    const productAttributes = [productCategory, productMaterial, productGemstone];
-                    const hasMatch = checkedFilters.some((filter) =>
-                        productAttributes.includes(filter)
-                    );
-
-                    if (!hasMatch) {
-                        shouldShow = false;
-                    }
-                }
+                const shouldShow = inPriceRange && categoryMatch && materialMatch && gemstoneMatch;
 
                 if (shouldShow) {
                     product.style.display = "block";
@@ -443,7 +570,12 @@
                 }
             });
 
-            document.getElementById("productCount").textContent = `(${visibleCount} items)`;
+            productCount.textContent = `(${visibleCount} items)`;
+        }
+
+        // Apply filters
+        document.getElementById("applyFilters").addEventListener("click", function () {
+            applyFilters();
         });
 
         // Clear filters
@@ -460,8 +592,13 @@
             products.forEach((product) => {
                 product.style.display = "block";
             });
+            productCount.textContent = `(${products.length} items)`;
+        });
 
-            document.getElementById("productCount").textContent = `(24 items)`;
+        // Set initial count
+        document.addEventListener("DOMContentLoaded", function () {
+            const products = document.querySelectorAll(".product-card");
+            productCount.textContent = `(${products.length} items)`;
         });
 
         // Scroll animations

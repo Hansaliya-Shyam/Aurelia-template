@@ -273,6 +273,13 @@ header {
     margin-bottom: 20px;
 }
 
+.feature-icon img {
+  width: 58px;
+  height: 58px;
+  object-fit: contain;
+  display: inline-block;
+}
+
 .feature-card h3 {
     font-size: 22px;
     margin-bottom: 12px;
@@ -416,6 +423,14 @@ header {
     font-size: 40px;
     color: var(--color-primary);
     margin-bottom: 20px;
+}
+
+.category-icon img {
+  width: 72px;
+  height: 72px;
+  object-fit: cover;
+  border-radius: 6px;
+  display: inline-block;
 }
 
 .category-card h3 {
@@ -1712,15 +1727,23 @@ header {
 }
 
 .blog-filter-select {
-  padding: 10px 16px;
+  padding: 10px 44px 10px 40px;
+  height: 44px;
   border-radius: 999px;
   border: 1px solid var(--color-secondary);
   font-family: var(--font-body);
   font-size: 14px;
   background-color: var(--color-white);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24'%3E%3Cpath fill='%238b816f' d='M3 5h18l-7 8v5l-4 2v-7L3 5z'/%3E%3C/svg%3E"), url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath fill='%238b816f' d='M1.4 0.6L6 5.2 10.6 0.6 12 2 6 8 0 2z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: left 14px center, right 16px center;
+  background-size: 14px 14px, 12px 8px;
   outline: none;
   transition: var(--transition);
   cursor: pointer;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
 }
 
 .blog-filter-select:hover,
@@ -2258,20 +2281,23 @@ header {
 
 .image-strip {
   display: grid;
-  grid-template-columns: 2fr 1.5fr 1.5fr;
+  grid-template-columns: 1.35fr 1fr;
   gap: 14px;
+  align-items: stretch;
 }
 
 .image-strip-left {
   display: grid;
   grid-template-rows: 1.3fr 1fr;
   gap: 14px;
+  height: clamp(420px, 60vh, 620px);
 }
 
 .image-strip-right {
   display: grid;
-  grid-template-rows: repeat(3, 1fr);
+  grid-template-rows: repeat(4, 1fr);
   gap: 14px;
+  height: clamp(420px, 60vh, 620px);
 }
 
 .strip-img {
@@ -2279,6 +2305,7 @@ header {
   overflow: hidden;
   box-shadow: var(--shadow-light);
   position: relative;
+  min-height: 150px;
 }
 
 .strip-img img {
@@ -3786,15 +3813,23 @@ header {
 }
 
 .sort-select {
-    padding: 10px 20px;
-    border-radius: 999px;
-    border: 1px solid var(--color-secondary);
-    font-family: var(--font-body);
-    font-size: 14px;
-    background-color: var(--color-white);
-    outline: none;
-    transition: var(--transition);
-    cursor: pointer;
+  padding: 10px 44px 10px 18px;
+  height: 44px;
+  border-radius: 999px;
+  border: 1px solid var(--color-secondary);
+  font-family: var(--font-body);
+  font-size: 14px;
+  background-color: var(--color-white);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath fill='%238b816f' d='M1.4 0.6L6 5.2 10.6 0.6 12 2 6 8 0 2z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 16px center;
+  background-size: 12px 8px;
+  outline: none;
+  transition: var(--transition);
+  cursor: pointer;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
 }
 
 .sort-select:hover,

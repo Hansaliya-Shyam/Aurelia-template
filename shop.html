@@ -53,9 +53,22 @@
     <!-- Shop Content -->
     <section class="section">
         <div class="container shop-container">
+            <!-- Filter Toggle Button (Mobile) -->
+            <button class="filter-toggle-btn" id="filterToggleBtn">
+                <i class="fas fa-filter"></i> Filter Products
+            </button>
+
+            <!-- Overlay for mobile filter -->
+            <div class="filter-overlay" id="filterOverlay"></div>
+
             <!-- Sidebar Filters -->
-            <aside class="sidebar animate-on-scroll">
-                <h3>Filter Products</h3>
+            <aside class="sidebar animate-on-scroll" id="filterSidebar">
+                <div class="sidebar-header">
+                    <h3>Filter Products</h3>
+                    <button class="filter-close-btn" id="filterCloseBtn">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
 
                 <div class="filter-group">
                     <h4>Category</h4>
@@ -498,6 +511,35 @@
             });
         });
 
+        // Mobile filter toggle
+        const filterToggleBtn = document.getElementById("filterToggleBtn");
+        const filterCloseBtn = document.getElementById("filterCloseBtn");
+        const filterSidebar = document.getElementById("filterSidebar");
+        const filterOverlay = document.getElementById("filterOverlay");
+
+        function openFilters() {
+            filterSidebar.classList.add("active");
+            filterOverlay.classList.add("active");
+            document.body.style.overflow = "hidden";
+        }
+
+        function closeFilters() {
+            filterSidebar.classList.remove("active");
+            filterOverlay.classList.remove("active");
+            document.body.style.overflow = "";
+        }
+
+        filterToggleBtn.addEventListener("click", openFilters);
+        filterCloseBtn.addEventListener("click", closeFilters);
+        filterOverlay.addEventListener("click", closeFilters);
+
+        // Close filters on window resize if larger than mobile
+        window.addEventListener("resize", function() {
+            if (window.innerWidth > 768) {
+                closeFilters();
+            }
+        });
+
         // Price range synchronization
         const priceRange = document.getElementById("priceRange");
         const minPrice = document.getElementById("minPrice");
@@ -576,6 +618,10 @@
         // Apply filters
         document.getElementById("applyFilters").addEventListener("click", function () {
             applyFilters();
+            // Close mobile filter panel after applying
+            if (window.innerWidth <= 768) {
+                closeFilters();
+            }
         });
 
         // Clear filters

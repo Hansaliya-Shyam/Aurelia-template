@@ -435,20 +435,25 @@
     // Scroll animations
     const animatedElements = document.querySelectorAll(".animate-on-scroll");
 
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add("in-view");
-          }
-        });
-      },
-      {
-        threshold: 0.15,
-      }
-    );
+    if ("IntersectionObserver" in window) {
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("in-view");
+            }
+          });
+        },
+        {
+          threshold: 0.15,
+        }
+      );
 
-    animatedElements.forEach((el) => observer.observe(el));
+      animatedElements.forEach((el) => observer.observe(el));
+    } else {
+      // Fallback for older mobile browsers so content is still visible.
+      animatedElements.forEach((el) => el.classList.add("in-view"));
+    }
   </script>
 </body>
 
